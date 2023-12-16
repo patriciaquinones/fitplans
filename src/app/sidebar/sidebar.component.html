@@ -1,0 +1,67 @@
+<aside id="sidebar" *ngIf="sidebarVisible"
+    class="fixed top-0 right-0 z-40 w-20 h-screen transition-transform -translate-x-full 2xs:translate-x-0 md:hidden"
+    aria-label="Sidebar">
+    <div class="flex flex-col justify-center items-center bg-black h-[4.5rem]">
+        <ul>
+            <li class="bg-black">
+                <button (click)="closeSidebar()" class=" flex flex-col items-center p-2 text-white rounded-lg
+                    hover:bg-gray-100 hover:bg-opacity-10 group">
+                    <img class="w-5 h-5 text-white transition duration-75 group-hover:text-white" aria-hidden="true"
+                        src="../../assets/close.svg" />
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div class="h-full px-3 py-4 overflow-y-auto bg-primary">
+        <ul class="space-y-2 font-medium">
+            <li>
+                <a href="#"
+                    class="flex flex-col items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
+                    <img class="w-5 h-5 text-white transition duration-75 group-hover:text-white" aria-hidden="true"
+                        src="../../assets/home.svg" />
+                    <span class="text-sm">Inicio</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex flex-col items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
+                    <img class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                        aria-hidden="true" src="../../assets/search.svg" />
+                    <span class="flex-1 text-sm whitespace-nowrap">Buscar</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex flex-col items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
+                    <img class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                        aria-hidden="true" src="../../assets/plans.svg" />
+                    <span class="flex-1 text-sm whitespace-nowrap">Planes</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex flex-col items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
+                    <img class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                        aria-hidden="true" src="../../assets/progress.svg" />
+                    <span class="flex-1 text-sm whitespace-nowrap">Progreso</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex flex-col items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
+                    <img class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                        aria-hidden="true" src="../../assets/payment.svg" />
+                    <span class="flex-1 text-sm whitespace-nowrap">Pagos</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex flex-col items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
+                    <img class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                        aria-hidden="true" src="../../assets/settings.svg" />
+                    <span class="flex-1 text-sm whitespace-nowrap">Perfil</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</aside>

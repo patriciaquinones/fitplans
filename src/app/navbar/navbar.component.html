@@ -1,0 +1,35 @@
+<nav class="bg-black">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="../../assets/logo.svg" class="h-14" alt="Logo fitplans" />
+        </a>
+        <button (click)="toggleSidebar()" data-collapse-toggle="navbar" type="button"
+            class="inline-flex items-center p-2 w-14 h-14 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            aria-controls="navbar" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <img class="w-14 h-14" aria-hidden="true" src="../../assets/hamburger.svg" alt="button hamburguesa" />
+        </button>
+        <div class="hidden w-full md:block md:w-auto p-4" id="navbar">
+            <ul
+                class="text-white font-semibold flex flex-col md:p-0 mt-4 mr-4 border rounded-lg md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0">
+                <li>
+                    <a href="#"
+                        class="block py-2 px-3 text-white rounded md:bg-transparent md:text-primary md:p-0"
+                        aria-current="page">Inicio</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0">Nosotros</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0">Precios</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
