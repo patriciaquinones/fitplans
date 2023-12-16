@@ -23,6 +23,17 @@ module.exports = {
         "4xl": "2560px",
       },
     },
+    fontFamily: {
+      body: [
+        "Inter",
+        "Roboto",
+        "Noto Sans",
+      ],
+      sans: [
+        "Roboto",
+        "Noto Sans",
+      ],
+    },
   },
   plugins: [],
 };
