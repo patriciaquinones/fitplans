@@ -7,8 +7,8 @@ module.exports = {
       colors: {
         primary: "#CC0505",
         secondary: {
-          100: "#E2E2D5",
-          200: "#888883",
+          100: "#EFEDE8",
+          200: "#323443",
         },
       },
       screens: {
@@ -24,15 +24,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      body: [
-        "Inter",
-        "Roboto",
-        "Noto Sans",
-      ],
-      sans: [
-        "Roboto",
-        "Noto Sans",
-      ],
+      body: ["Inter", "Roboto", "Noto Sans"],
+      sans: ["Roboto", "Noto Sans"],
     },
   },
   plugins: [],
