@@ -22,6 +22,15 @@ module.exports = {
         "3xl": "1920px",
         "4xl": "2560px",
       },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 100 },
+        },
+      },
+      animation: {
+        fadeIn: "fadeIn 0.2s ease-in-out forwards",
+      },
     },
     fontFamily: {
       body: ["Inter", "Roboto", "Noto Sans"],
