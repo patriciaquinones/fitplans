@@ -8,6 +8,7 @@ import { TestimonialsComponent } from "./home/testimonials/testimonials.componen
 import { HeroComponent } from "./home/hero/hero.component";
 import { TeamComponent } from "./home/team/team.component";
 import { CtaComponent } from "./home/cta/cta.component";
+import { AboutComponent } from "./home/about/about.component";
 
 @Component({
     selector: 'app-root',
@@ -23,7 +24,8 @@ import { CtaComponent } from "./home/cta/cta.component";
         TestimonialsComponent,
         HeroComponent,
         TeamComponent,
-        CtaComponent
+        CtaComponent,
+        AboutComponent
     ]
 })
 export class AppComponent {
