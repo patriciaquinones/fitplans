@@ -6,6 +6,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { PlansComponent } from './home/plans/plans.component';
 import { TestimonialsComponent } from "./home/testimonials/testimonials.component";
 import { HeroComponent } from "./home/hero/hero.component";
+import { TeamComponent } from "./home/team/team.component";
 
 @Component({
     selector: 'app-root',
@@ -19,7 +20,8 @@ import { HeroComponent } from "./home/hero/hero.component";
         SidebarComponent,
         PlansComponent,
         TestimonialsComponent,
-        HeroComponent
+        HeroComponent,
+        TeamComponent
     ]
 })
 export class AppComponent {
