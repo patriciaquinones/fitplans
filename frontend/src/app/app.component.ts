@@ -7,6 +7,7 @@ import { PlansComponent } from './home/plans/plans.component';
 import { TestimonialsComponent } from "./home/testimonials/testimonials.component";
 import { HeroComponent } from "./home/hero/hero.component";
 import { TeamComponent } from "./home/team/team.component";
+import { CtaComponent } from "./home/cta/cta.component";
 
 @Component({
     selector: 'app-root',
@@ -21,7 +22,8 @@ import { TeamComponent } from "./home/team/team.component";
         PlansComponent,
         TestimonialsComponent,
         HeroComponent,
-        TeamComponent
+        TeamComponent,
+        CtaComponent
     ]
 })
 export class AppComponent {
