@@ -1,0 +1,19 @@
+import { Component } from '@angular/core';
+import { AboutComponent } from "./about/about.component";
+import { FaqComponent } from "./faq/faq.component";
+import { CtaComponent } from "./cta/cta.component";
+import { TeamComponent } from "./team/team.component";
+import { PlansComponent } from "./plans/plans.component";
+import { TestimonialsComponent } from "./testimonials/testimonials.component";
+import { HeroComponent } from "./hero/hero.component";
+
+@Component({
+    selector: 'app-homepage',
+    standalone: true,
+    templateUrl: './homepage.component.html',
+    styleUrl: './homepage.component.css',
+    imports: [AboutComponent, FaqComponent, CtaComponent, TeamComponent, PlansComponent, TestimonialsComponent, HeroComponent]
+})
+export class HomepageComponent {
+
+}
