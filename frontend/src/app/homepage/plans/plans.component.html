@@ -10,10 +10,12 @@
         </div>
         <div class="grid lg:grid-flow-col lg:auto-cols-max justify-center gap-10 lg:gap-20">
             <!-- Pricing Card -->
-            <div class="flex flex-col py-6 2xs:w-72 xs:w-96 md:w-[420px] h-full text-secondary-100 bg-secondary-200 rounded-lg shadow xl:p-8">
+            <div
+                class="flex flex-col py-6 2xs:w-72 xs:w-96 md:w-[420px] h-full text-secondary-100 bg-secondary-200 rounded-lg shadow xl:p-8">
                 <!-- Title and subtitle of the card -->
                 <h3 class="mb-4 text-center 2xs:text-lg md:text-2xl font-semibold">Plan gratuito</h3>
-                <p class="break-all font-light text-secondary-100 2xs:text-sm md:text-base px-2">Alcance sus objetivos de
+                <p class="break-all font-light text-secondary-100 2xs:text-sm md:text-base px-2">Alcance sus objetivos
+                    de
                     acondicionamiento físico o mantenga su estilo de vida saludable con capacitación profesional.</p>
                 <!-- List -->
                 <ul role="list" class="p-6 space-y-4 text-left">
@@ -55,12 +57,14 @@
                 </div>
                 <!-- Button or link -->
                 <div class="flex mx-auto lg:ml-2 lg:mt-40 hover:underline">
-                    <a href="#"
-                        class="text-primary font-medium rounded-lg text-sm ml-4 mr-2 py-2.5 text-center">Continuar</a><img class="w-4 h4" src="../assets/icons/arrowRight.svg" alt="arrow right" />
+                    <a (click)="goToLogin()"
+                        class="text-primary font-medium rounded-lg text-sm ml-4 mr-2 py-2.5 text-center cursor-pointer">Continuar</a><img
+                        class="w-4 h4" src="../assets/icons/arrowRight.svg" alt="arrow right" />
                 </div>
             </div>
             <!-- Pricing Card -->
-            <div class="flex flex-col py-6 2xs:w-72 xs:w-96 md:w-[420px] h-full text-secondary-100 bg-secondary-200 rounded-lg shadow xl:p-8">
+            <div
+                class="flex flex-col py-6 2xs:w-72 xs:w-96 md:w-[420px] h-full text-secondary-100 bg-secondary-200 rounded-lg shadow xl:p-8">
                 <!-- Title and subtitle of the card -->
                 <h3 class="mb-4 text-center 2xs:text-lg md:text-2xl font-semibold">Plan Premium</h3>
                 <p class="break-all font-light text-secondary-100 2xs:text-sm md:text-base px-2">Incluye todo lo que
@@ -107,8 +111,8 @@
                     <span class="text-secondary-100">/Mensual</span>
                 </div>
                 <!-- Button or link -->
-                <a href="#"
-                    class="text-white bg-primary hover:bg-opacity-90 focus:ring-4 focus:ring-primary font-semibold rounded-xl text-xs mx-auto lg:ml-4 lg:mt-40 xl:ml-2 w-36 py-1.5 text-center">Unéte
+                <a (click)="goToRegister()"
+                    class="text-white bg-primary hover:bg-opacity-90 focus:ring-4 focus:ring-primary font-semibold rounded-xl text-xs mx-auto lg:ml-4 lg:mt-40 xl:ml-2 w-36 py-1.5 text-center cursor-pointer">Unéte
                     ahora!</a>
             </div>
         </div>
