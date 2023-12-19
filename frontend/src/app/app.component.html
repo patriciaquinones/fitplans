@@ -1,25 +1,11 @@
-<app-navbar></app-navbar>
+<ng-container *ngIf="useCustomLayout; else defaultLayout">
+    <!-- Dashboard Layout -->
+    <router-outlet></router-outlet>
+</ng-container>
 
-<!--Hero Section-->
-<app-hero></app-hero>
-
-<!--Testimonials Section-->
-<app-testimonials></app-testimonials>
-
-<!--Plans Section-->
-<app-plans></app-plans>
-
-<!--Team Section-->
-<app-team></app-team>
-
-<!--CTA Section-->
-<app-cta></app-cta>
-
-<!--About Section-->
-<app-about></app-about>
-
-<!--FAQ Section-->
-<app-faq></app-faq>
-
-<!--Footer Section-->
-<app-footer></app-footer>
+<ng-template #defaultLayout>
+    <!-- Default Layout -->
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+</ng-template>
