@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule,FormBuilder,FormGroup,Validators } from '@angular/forms';
+import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 
 
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  AuthService=inject(AuthService);
 
   registerForm!: FormGroup;
 
@@ -23,7 +25,10 @@ export class RegisterComponent {
       validatePass: ['',Validators.required],
       email:['',[Validators.required,Validators. minLength (5)]],
       password: ['', Validators.required]
-    });
+    })
+  }
+  onSubmit(){
+    console.log(this.registerForm.value);
   }
 
   // constructor(private router: Router) {}

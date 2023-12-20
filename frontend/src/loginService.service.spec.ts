@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { LoginServiceService } from './loginService.service';
+import { LoginServiceService } from './services/loginService.service'; // Import the missing module
 
 describe('Service: LoginService', () => {
   beforeEach(() => {
