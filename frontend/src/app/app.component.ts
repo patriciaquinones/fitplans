@@ -1,18 +1,23 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
-import { FooterComponent } from "./footer/footer.component";
-import { NavbarComponent } from "./navbar/navbar.component";
+import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 interface MyRouteData {
   customLayout?: boolean;
 }
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css',
-    imports: [CommonModule, FooterComponent, NavbarComponent, RouterOutlet]
+  selector: 'app-root',
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
+  imports: [
+    CommonModule,
+    FooterComponent,
+    NavbarComponent,
+    RouterOutlet,
+  ],
 })
 export class AppComponent {
   title = 'fitplans';
@@ -23,7 +28,8 @@ export class AppComponent {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const currentRoute = this.router.routerState.snapshot.root;
-        this.useCustomLayout = (currentRoute.firstChild?.data as MyRouteData)?.customLayout ?? false;
+        this.useCustomLayout =
+          (currentRoute.firstChild?.data as MyRouteData)?.customLayout ?? false;
       }
     });
   }

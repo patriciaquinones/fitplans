@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { SidebarService } from '../sidebar.service';
+import { SidebarService } from '../../sidebar.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'app-dashside',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css',
+  templateUrl: './dashside.component.html',
+  styleUrl: './dashside.component.css',
 })
-export class SidebarComponent implements OnInit {
+export class DashsideComponent implements OnInit {
   sidebarVisible = false;
-  navbarItems: { link: string; iconPath: string; label: string }[];
+  menuItems: { link: string; iconPath: string; label: string }[];
 
   constructor(private SidebarService: SidebarService) {
-    this.navbarItems = SidebarService.getNavbarItems();
+    this.menuItems = SidebarService.getMenuItems();
   }
 
   ngOnInit() {

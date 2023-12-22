@@ -16,12 +16,12 @@
     <div class="h-full px-3 py-4 overflow-y-auto bg-primary">
         <!-- The sidebar links with their icons -->
         <ul class="space-y-2 font-medium">
-            <li *ngFor="let navbarItem of navbarItems">
-                <a [href]="navbarItem.link"
+            <li *ngFor="let menuItem of menuItems">
+                <a [href]="menuItem.link"
                     class="flex flex-col items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
-                    <img [src]="navbarItem.iconPath"
+                    <img [src]="menuItem.iconPath"
                         class="w-5 h-5 text-white transition duration-75 group-hover:text-white" aria-hidden="true" />
-                    <span class="text-sm">{{ navbarItem.label }}</span>
+                    <span class="text-sm">{{ menuItem.label }}</span>
                 </a>
             </li>
         </ul>

@@ -1,0 +1,55 @@
+<section id="dashboard" class="w-full h-screen bg-black">
+    <!-- The navbar for the Dashboard -->
+    <nav class="block md:hidden bg-black">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+            <!--The logo on the right of the nav-->
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="../../assets/icons/logo.svg" class="h-14" alt="Logo fitplans" />
+            </a>
+            <!--The hamburger button on the left of the nav-->
+            <button (click)="toggleSidebar()" data-collapse-toggle="navbar" type="button"
+                class="inline-flex items-center p-2 w-14 h-14 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                aria-controls="navbar" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <img class="w-14 h-14" aria-hidden="true" src="../../assets/icons/hamburger.svg"
+                    alt="button hamburguesa" />
+            </button>
+        </div>
+    </nav>
+    <!-- The default sidebar for the Dashboard on the left-->
+    <aside id="sidebar" class="fixed top-0 left-0 z-40 w-24 h-screen md:block 2xs:hidden" aria-label="Sidebar">
+        <div class="flex flex-col justify-center items-center bg-black h-[4.5rem]">
+            <ul>
+                <li class="bg-black">
+                    <!--The logo on the right of the nav-->
+                    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="../../assets/icons/logo.svg" class="h-14" alt="Logo fitplans" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="h-full px-3 py-4 overflow-y-auto bg-primary">
+            <!-- The sidebar links with their icons -->
+            <ul class="space-y-2 font-medium">
+                <li *ngFor="let menuItem of menuItems">
+                    <a [href]="menuItem.link"
+                        class="flex flex-col items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
+                        <img [src]="menuItem.iconPath"
+                            class="w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                            aria-hidden="true" />
+                        <span class="text-sm">{{ menuItem.label }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <app-dashside></app-dashside>
+    <!-- Main content -->
+    <div class="container p-4 md:pl-32 md:pt-20">
+        <div class="row">
+            <div class="col-md-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>
