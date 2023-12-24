@@ -9,6 +9,7 @@ module.exports = {
         secondary: {
           100: "#EFEDE8",
           200: "#323443",
+          300: "#23242A",
         },
       },
       screens: {

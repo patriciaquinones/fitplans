@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-progress',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './progress.component.html',
-  styleUrl: './progress.component.css'
+  styleUrl: './progress.component.css',
 })
 export class ProgressComponent {
-
+  lastExercise = [
+    {
+      image: '../../../assets/images/lastExercise.svg',
+      title: 'Ejercicios de hombros',
+      level: 'Avanzado',
+    },
+  ];
 }
