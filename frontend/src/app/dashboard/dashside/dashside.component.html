@@ -1,5 +1,5 @@
 <aside id="sidebar" *ngIf="sidebarVisible"
-    class="fixed top-0 right-0 z-40 w-20 h-screen transition-transform -translate-x-full 2xs:translate-x-0 md:hidden"
+    class="fixed top-0 right-0 z-50 w-20 h-screen transition-transform -translate-x-full 2xs:translate-x-0 md:hidden"
     aria-label="Sidebar">
     <div class="flex flex-col justify-center items-center bg-black h-[4.5rem]">
         <ul>
@@ -17,7 +17,7 @@
         <!-- The sidebar links with their icons -->
         <ul class="space-y-2 font-medium">
             <li *ngFor="let menuItem of menuItems">
-                <a [href]="menuItem.link"
+                <a [routerLink]="menuItem.link"
                     class="flex flex-col items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
                     <img [src]="menuItem.iconPath"
                         class="w-5 h-5 text-white transition duration-75 group-hover:text-white" aria-hidden="true" />

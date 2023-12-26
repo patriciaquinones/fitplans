@@ -9,20 +9,44 @@ export class SidebarService {
 
   //menu items for dashboard
   menuItems = [
-    { link: '#', iconPath: '../../assets/icons/home.svg', label: 'Inicio' },
+    {
+      link: '/dashboard/progress',
+      iconPath: '../../assets/icons/home.svg',
+      label: 'Inicio',
+    },
     { link: '#', iconPath: '../../assets/icons/search.svg', label: 'Buscar' },
     { link: '#', iconPath: '../../assets/icons/plans.svg', label: 'Planes' },
-    { link: '#', iconPath: '../../assets/icons/progress.svg', label: 'Progreso' },
+    {
+      link: '/dashboard/progress',
+      iconPath: '../../assets/icons/progress.svg',
+      label: 'Progreso',
+    },
     { link: '#', iconPath: '../../assets/icons/payment.svg', label: 'Pagos' },
-    { link: '#', iconPath: '../../assets/icons/settings.svg', label: 'Perfil' },
+    {
+      link: '/dashboard/profile',
+      iconPath: '../../assets/icons/settings.svg',
+      label: 'Perfil',
+    },
   ];
 
   //menu items for homepage, register and login
   navbarItems = [
     { link: '#', iconPath: '../../assets/icons/home.svg', label: 'Inicio' },
-    { link: '#about', iconPath: '../../assets/icons/about.svg', label: 'Nosotros' },
-    { link: '#plans', iconPath: '../../assets/icons/plans.svg', label: 'Precios' },
-    { link: '#contact', iconPath: '../../assets/icons/contact.svg', label: 'Contacto' },
+    {
+      link: '#about',
+      iconPath: '../../assets/icons/about.svg',
+      label: 'Nosotros',
+    },
+    {
+      link: '#plans',
+      iconPath: '../../assets/icons/plans.svg',
+      label: 'Precios',
+    },
+    {
+      link: '#contact',
+      iconPath: '../../assets/icons/contact.svg',
+      label: 'Contacto',
+    },
   ];
 
   getMenuItems() {

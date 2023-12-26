@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../sidebar.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dashside',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './dashside.component.html',
   styleUrl: './dashside.component.css',
 })

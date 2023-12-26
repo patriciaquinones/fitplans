@@ -4,6 +4,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './dashboard/progress/progress.component';
+import { ProfileComponent } from './dashboard/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', component: HomepageComponent, data: { customLayout: false } },
@@ -20,6 +21,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'progress', pathMatch: 'full' }, // Per default Im redirecting to progress as figma shows
       { path: 'progress', component: ProgressComponent },
+      { path: 'profile', component: ProfileComponent },
     ],
   },
 ];

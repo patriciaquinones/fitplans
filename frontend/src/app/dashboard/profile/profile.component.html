@@ -1,0 +1,72 @@
+<section id="profile" class="container mx-auto w-full h-full max-w-5xl">
+    <div class="bg-black">
+        <!--Title-->
+        <h1 class="text-white text-2xl text-center font-semibold mb-2 md:text-left md:text-4xl md:font-medium">
+            Perfil
+        </h1>
+        <!--card-->
+        <div class="bg-secondary-300 p-5 rounded-lg max-w-5xl mx-auto">
+            <!--subtitle-->
+            <h2 class="text-lg text-center md:text-2xl md:text-left text-white font-medium mb-4 md:ml-10">
+                Información personal
+            </h2>
+            <!--The form-->
+            <form class="relative block mx-auto w-full z-40">
+                <div class="grid md:grid-cols-3 md:gap-2 lg:grid-cols-4 mx-auto w-full">
+                    <!-- First row on desktop -->
+                    <div class="relative z-0 w-full mb-5 group lg:col-span-2">
+                        <label for="name" class="font-medium text-sm text-white">Nombre</label>
+                        <input type="name" name="name" id="name"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                    </div>
+                    <div class="relative z-0 w-full mb-5 group lg:col-span-2">
+                        <label for="email" class="font-medium text-sm text-white">Correo Electrónico</label>
+                        <input type="email" name="email" id="email"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                    </div>
+                    <div class="relative z-0 w-full mb-5 group">
+                        <label for="birthday" class="font-medium text-sm text-white">Fecha de Nacimiento</label>
+                        <input type="date" name="birthday" id="birthday"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                    </div>
+                    <!-- Second row on desktop -->
+                    <div class="2xs:grid grid-cols-2 gap-2 md:col-span-2">
+                        <div class="relative z-0 w-full mb-5 group">
+                            <label for="height" class="font-medium text-sm text-white">Estatura</label>
+                            <input type="number" name="height" id="height"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " required />
+                        </div>
+                        <div class="relative z-0 w-full mb-5 group">
+                            <label for="weight" class="font-medium text-sm text-white">Peso</label>
+                            <input type="number" name="weight" id="weight"
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " required />
+                        </div>
+                    </div>
+                    <div class="relative z-0 w-full mb-5 group">
+                        <label for="gender" class="font-medium text-sm text-white">Sexo</label>
+                        <select name="gender" id="gender"
+                            class="block py-2.5 w-full text-sm bg-white appearance-none focus:outline-none focus:ring-0">
+                            <option *ngFor="let option of options">
+                                {{ option.gender }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit"
+                    class="relative block text-white bg-primary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-opacity-75 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mx-auto text-center z-20">
+                    Actualizar
+                </button>
+            </form>
+            <!-- The image -->
+            <div class="bg-black hidden lg:block relative z-30 mb-10 -mt-10 mx-auto">
+                <img src="../../../assets/images/womanTraining.svg" alt="Woman training"
+                    class="absolute mx-auto left-0 right-0 w-[33%] xl:w-1/2" />
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,11 @@
+select {
+    background: url(../../../assets/icons/arrowRed.svg) no-repeat right 0.7em top 50%, 0 0 !important;
+    background-size: 1.5em auto, 100%;
+    cursor: pointer;
+    width: 100%;
+    border: 1px solid #ccc;
+    color: #23242A;
+    background-color: white !important;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
