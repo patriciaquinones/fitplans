@@ -15,7 +15,11 @@ export class SidebarService {
       label: 'Inicio',
     },
     { link: '#', iconPath: '../../assets/icons/search.svg', label: 'Buscar' },
-    { link: '#', iconPath: '../../assets/icons/plans.svg', label: 'Planes' },
+    {
+      link: '/dashboard/plans',
+      iconPath: '../../assets/icons/plans.svg',
+      label: 'Planes',
+    },
     {
       link: '/dashboard/progress',
       iconPath: '../../assets/icons/progress.svg',
