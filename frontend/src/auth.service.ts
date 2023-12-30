@@ -11,14 +11,14 @@ export class AuthService {
   private s_client: SupabaseClient;
 
   constructor() {
-    this.s_client = createClient(environment.supabase.apiurl, environment.supabase.apikey);
+    this.s_client = createClient(environment.apiurl, environment.apikey);
   }
 
-  // Register
-signUp (email:string, password:string) {
 
-  return this.s_client.auth.signUp({email,password
-  });
+  // Register
+signUp (email:string,password:string,firstName:string,validatePass:string) {
+
+  return this.s_client.auth.signUp({email,password});
 }
 
 //Login
