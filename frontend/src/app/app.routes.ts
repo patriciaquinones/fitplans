@@ -7,6 +7,7 @@ import { ProgressComponent } from './dashboard/progress/progress.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { PlansComponent } from './dashboard/plans/plans.component';
 import { PaymentsComponent } from './dashboard/payments/payments.component';
+import { CaloriesComponent } from './dashboard/calories/calories.component';
 
 export const routes: Routes = [
   { path: '', component: HomepageComponent, data: { customLayout: false } },
@@ -26,6 +27,7 @@ export const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'plans', component: PlansComponent },
       { path: 'payments', component: PaymentsComponent },
+      { path: 'calories', component: CaloriesComponent },
     ],
   },
 ];

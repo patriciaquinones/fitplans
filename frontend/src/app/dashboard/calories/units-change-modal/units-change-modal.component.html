@@ -1,0 +1,7 @@
+<div *ngIf="visible" class="modal md:ml-16">
+    <div class="modal-content">
+        <p>Debes ingresar el peso en {{ units === 'imperial' ? 'libras' : 'kilogramos' }}.</p>
+        <button (click)="onClose()"
+            class="block bg-primary hover:opacity-75 px-2 py-1 mt-4 text-center mx-auto rounded-lg text-white">OK</button>
+    </div>
+</div>

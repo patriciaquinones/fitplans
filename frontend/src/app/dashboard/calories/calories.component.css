@@ -1,0 +1,4 @@
+input,select:focus:not(:focus-visible) {
+    @apply focus:-outline-offset-1 focus:outline-primary;
+}
+  
