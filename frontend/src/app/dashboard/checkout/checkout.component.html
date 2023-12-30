@@ -1,0 +1,45 @@
+<section id="profile" class="container mx-auto w-full h-full max-w-5xl">
+    <div class="bg-black text-white">
+        <!--Title-->
+        <h1 class=" text-2xl text-center font-semibold mb-2 md:text-left md:text-4xl md:font-medium">
+            Carrito
+        </h1>
+        <!--card-->
+        <div class="bg-secondary-300 p-5 rounded-lg max-w-5xl mx-auto">
+            <!--subtitle-->
+            <h2 class="text-lg text-center md:text-2xl md:text-left text-white font-medium mb-4 xs:ml-5 lg:ml-10">
+                Resumen del pedido
+            </h2>
+            <!-- The summary -->
+            <div class="flex flex-col gap-10 md:gap-5 md:flex-row">
+                <div class="flex-col md:ml-5 lg::ml-16 mx-auto justify-center md:justify-normal">
+                    <div class="flex font-bold border-b-2 border-b-white gap-40 xs:gap-44">
+                        <span>Plan</span>
+                        <span>Precio</span>
+                    </div>
+                    <!-- Dinamically updated -->
+                    <div class="flex text-sm gap-28">
+                        <span>Plan Gratuito</span> <!-- Dinamically updated -->
+                        <span>RD$0.00</span> <!-- Dinamically updated -->
+                    </div>
+                    <div class="flex gap-16 mt-20 border-t-2 border-t-white">
+                        <span class="font-bold">Total a pagar hoy</span>
+                        <span class="text-sm">RD$0.00</span> <!-- Dinamically updated -->
+                    </div>
+                    <p class="text-xs mt-2">*Esto es un pago mensual</p>
+                </div>
+
+                <div class="flex-col justify-center items-center mx-auto">
+                    <h2 class="text-lg lg:text-xl text-center font-semibold">Selecciona el método de pago</h2>
+                    <!-- Here the buttons --_-- -->
+                </div>
+            </div>
+
+            <!-- The image -->
+            <div class="bg-black hidden lg:block relative z-30 mb-10 -mt-10 mx-auto">
+                <img src="../../../assets/images/womanTraining.svg" alt="Woman training"
+                    class="absolute mx-auto left-0 right-0 w-[33%] xl:w-1/2" />
+            </div>
+        </div>
+    </div>
+</section>
