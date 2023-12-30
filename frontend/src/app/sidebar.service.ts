@@ -14,7 +14,11 @@ export class SidebarService {
       iconPath: '../../assets/icons/home.svg',
       label: 'Inicio',
     },
-    { link: '/dashboard/', iconPath: '../../assets/icons/search.svg', label: 'Buscar' },
+    {
+      link: '/dashboard/',
+      iconPath: '../../assets/icons/search.svg',
+      label: 'Buscar',
+    },
     {
       link: '/dashboard/plans',
       iconPath: '../../assets/icons/plans.svg',
@@ -25,11 +29,25 @@ export class SidebarService {
       iconPath: '../../assets/icons/progress.svg',
       label: 'Progreso',
     },
-    { link: '/dashboard/payments', iconPath: '../../assets/icons/payment.svg', label: 'Pagos' },
+    {
+      link: '/dashboard/calories',
+      iconPath: '../../assets/icons/caloriesIcon.svg',
+      label: 'Calorías',
+    },
+    {
+      link: '/dashboard/payments',
+      iconPath: '../../assets/icons/payment.svg',
+      label: 'Pagos',
+    },
     {
       link: '/dashboard/profile',
       iconPath: '../../assets/icons/settings.svg',
       label: 'Perfil',
+    },
+    {
+      link: '/../../',
+      iconPath: '../../assets/icons/logout.svg',
+      label: 'Salir',
     },
   ];
 
