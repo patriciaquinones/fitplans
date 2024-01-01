@@ -3,7 +3,7 @@
         <div class="flex h-full flex-wrap items-center justify-center lg:justify-between">
             <!-- left column container with form -->
             <div class="md:w-8/12 lg:ml-6 lg:w-5/12">
-                <form>
+                <form [formGroup]="logInform" (ngSubmit)="logIn()">
                     <a (click)="goToRegister()" class="text-secondary-100 hover:underline cursor-pointer">¿No tienes una cuenta? Registrate</a>
 
                     <!-- Email input -->

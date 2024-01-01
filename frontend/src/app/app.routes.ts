@@ -10,6 +10,7 @@ import { PaymentsComponent } from './dashboard/payments/payments.component';
 import { CaloriesComponent } from './dashboard/calories/calories.component';
 import { CheckoutComponent } from './dashboard/checkout/checkout.component';
 
+
 export const routes: Routes = [
   { path: '', component: HomepageComponent, data: { customLayout: false } },
   { path: 'login', component: LoginComponent, data: { customLayout: false } },

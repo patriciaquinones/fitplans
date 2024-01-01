@@ -3,7 +3,7 @@
         <div class="flex h-full flex-wrap items-center justify-center lg:justify-between">
             <!-- left column container with form -->
             <div class="md:w-8/12 lg:ml-6 lg:w-5/12">
-                <form>
+                <form  [formGroup]="registerForm" (ngSubmit)="signUp" >
                     <a (click)="goToLogin()" class="text-secondary-100 hover:underline cursor-pointer">¿Tienes una
                         cuenta? Inicia sessión</a>
 
@@ -12,7 +12,7 @@
                         class="block mt-10 pointer-events-none max-w-[90%] leading-[2.15] text-secondary-100">Nombre
                     </label>
                     <div class="relative mb-6">
-                        <input type="text"
+                        <input type="text" formControlName="firstName"
                             class="peer block min-h-[auto] w-full rounded border-0 bg-secondary-100 px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                             id="inputName" placeholder="Nombre completo" />
                     </div>
@@ -22,9 +22,10 @@
                         class="block pointer-events-none max-w-[90%] leading-[2.15] text-secondary-100">Correo
                     </label>
                     <div class="relative mb-6">
-                        <input type="text"
+                        <input type="text" formControlName="email"
                             class="peer block min-h-[auto] w-full rounded border-0 bg-secondary-100 px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                             id="inputEmail" placeholder="Correo" />
+                            
                     </div>
 
                     <!-- Password input -->
@@ -32,7 +33,7 @@
                         class="block pointer-events-none max-w-[90%] leading-[2.15] text-secondary-100">Contraseña
                     </label>
                     <div class="relative mb-6">
-                        <input type="password"
+                        <input type="password" formControlName="password"
                             class="peer block min-h-[auto] w-full rounded border-0 bg-secondary-100 px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                             id="inputPassword" placeholder="Contraseña" />
                     </div>
@@ -62,7 +63,7 @@
                     </div>
 
                     <!-- Submit button -->
-                    <button type="submit"
+                    <button type="Submit"
                         class="inline-block w-full rounded bg-primary px-7 pb-2.5 pt-3 text-base font-medium leading-normal text-white transition duration-150 ease-in-out hover:bg-opacity-75 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700 shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
                         Registrarse
                     </button>
