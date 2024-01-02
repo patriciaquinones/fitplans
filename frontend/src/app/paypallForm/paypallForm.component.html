@@ -1,0 +1,11 @@
+<form (ngSubmit)="processPayment()" >
+  <label>Nombre en la tarjeta:</label>
+  <input type="text" name="cardName" required>
+
+  <label>Número de tarjeta:</label>
+  <input type="text" name="cardNumber" required>
+
+  <!-- Otros campos del formulario (fecha de expiración, código de seguridad, etc.) -->
+
+  <button type="submit" >Pagar</button>
+</form>

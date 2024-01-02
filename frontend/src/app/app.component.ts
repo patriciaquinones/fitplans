@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FormsModule } from '@angular/forms'; // Asegúrate de importar FormsModule
 
 interface MyRouteData {
   customLayout?: boolean;
@@ -17,6 +18,7 @@ interface MyRouteData {
     FooterComponent,
     NavbarComponent,
     RouterOutlet,
+    FormsModule
   ],
 })
 export class AppComponent {
