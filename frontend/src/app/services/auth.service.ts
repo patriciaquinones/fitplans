@@ -40,16 +40,14 @@ export class AuthService {
      await addDoc(collection(db, "newuser"), {
       uid: (await result).user.uid,
       email: (await result).user.email,
-      firstName: credential.firstName,
-      // Add any other user properties you need
+      firstName:credential.firstName,
+    
     });
     return result;
   } catch (error: any) {
     return error;
   }
 }
-
-
 
 
   logInWithEmailAndPassword(credential: Credential) {
@@ -64,7 +62,7 @@ export class AuthService {
     return this.auth.signOut();
   }
 
-  // providers
+  // google provider
 
  
 signInWithGoogleProvider(): Promise<UserCredential> {
@@ -80,10 +78,11 @@ async callPopUp(provider: AuthProvider): Promise<UserCredential> {
     // Get Firestore instance
     const db = getFirestore();
 
-    // Add the user to the 'newUsers' collection
+    // Add the user to the 'newusers' collection
     await addDoc(collection(db, "newuser"), {
       uid: result.user.uid,
       email: result.user.email,
+      firstName: result.user.displayName,
       // Add any other user properties you need
     });
 
