@@ -52,8 +52,6 @@ export class AuthService {
 
 
 
-  
-
   logInWithEmailAndPassword(credential: Credential) {
     return signInWithEmailAndPassword(
       this.auth,
@@ -68,19 +66,30 @@ export class AuthService {
 
   // providers
 
-  signInWithGoogleProvider(): Promise<UserCredential> {
-    const provider = new GoogleAuthProvider();
+ 
+signInWithGoogleProvider(): Promise<UserCredential> {
+  const provider = new GoogleAuthProvider();
 
-    return this.callPopUp(provider);
-  }
+  return this.callPopUp(provider);
+}
 
-  async callPopUp(provider: AuthProvider): Promise<UserCredential> {
-    try {
-      const result = await signInWithPopup(this.auth, provider);
+async callPopUp(provider: AuthProvider): Promise<UserCredential> {
+  try {
+    const result = await signInWithPopup(this.auth, provider);
 
-      return result;
-    } catch (error: any) {
-      return error;
-    }
+    // Get Firestore instance
+    const db = getFirestore();
+
+    // Add the user to the 'newUsers' collection
+    await addDoc(collection(db, "newuser"), {
+      uid: result.user.uid,
+      email: result.user.email,
+      // Add any other user properties you need
+    });
+
+    return result;
+  } catch (error: any) {
+    return error;
   }
 }
+  }
