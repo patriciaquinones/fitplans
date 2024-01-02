@@ -4,6 +4,7 @@ import { NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService, Credential } from '../services/auth.service';
 import { inject } from '@angular/core';
+import {  ButtonProviders } from '../providers/button-providers.component';
 
 
 import {
@@ -12,6 +13,8 @@ import {
   FormGroup,
   ReactiveFormsModule,
   Validators,
+
+
 } from '@angular/forms';
 
 interface LogInForm {
@@ -24,7 +27,8 @@ interface LogInForm {
   standalone: true,
   imports: [ ReactiveFormsModule,RouterModule,NgIf],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
+
 })
 
 export  class LoginComponent {

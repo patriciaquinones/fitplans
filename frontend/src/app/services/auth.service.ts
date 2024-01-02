@@ -1,4 +1,5 @@
 import { Injectable, inject } from '@angular/core';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import {
   Auth,
   AuthProvider,
@@ -24,13 +25,34 @@ export class AuthService {
 
   readonly authState$ = authState(this.auth);
 
-  signUpWithEmailAndPassword(credential: Credential): Promise<UserCredential> {
-    return createUserWithEmailAndPassword(
+  async signUpWithEmailAndPassword(credential: Credential): Promise<UserCredential> {
+    try {
+
+    const result= createUserWithEmailAndPassword(
       this.auth,
       credential.email,
       credential.password
     );
+      // Get Firestore instance
+      const db = getFirestore();
+
+     // Add the user to the 'newUsers' collection
+     await addDoc(collection(db, "newuser"), {
+      uid: (await result).user.uid,
+      email: (await result).user.email,
+      firstName: credential.firstName,
+      // Add any other user properties you need
+    });
+    return result;
+  } catch (error: any) {
+    return error;
   }
+}
+
+
+
+
+  
 
   logInWithEmailAndPassword(credential: Credential) {
     return signInWithEmailAndPassword(
