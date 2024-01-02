@@ -57,9 +57,12 @@
                     <span class="text-secondary-100">/Mensual</span>
                 </div>
                 <!-- Button or link -->
-                <button href="#"
+                <div class="flex justify-center" >
+                  <button disabled
                     class="text-white bg-primary hover:bg-opacity-90 focus:ring-4 focus:ring-primary font-semibold rounded-lg text-xs mx-auto  mb-0 w-36 py-1.5 text-center cursor-pointer">Plan actual</button>
-            </div>
+
+                </div>
+                </div>
             <!-- Pricing Card -->
             <div
                 class="flex flex-col py-6 2xs:w-72 xs:w-96 md:w-[420px] h-fit text-secondary-100 bg-secondary-200 rounded-lg shadow xl:p-8">
@@ -109,9 +112,10 @@
                     <span class="text-secondary-100">/Mensual</span>
                 </div>
                 <!-- Button or link -->
-                <button href="#"
-                    class="text-white bg-primary hover:bg-opacity-90 focus:ring-4 focus:ring-primary font-semibold rounded-lg text-xs mx-auto  mb-0 w-36 py-1.5 text-center cursor-pointer">Obtener</button>
+                <button (click)="onButtonClick()"
+    class="text-white bg-primary hover:bg-opacity-90 focus:ring-4 focus:ring-primary font-semibold rounded-lg text-xs mx-auto  mb-0 w-36 py-1.5 text-center cursor-pointer">Obtener</button>
             </div>
         </div>
     </div>
+
 </section>

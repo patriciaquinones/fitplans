@@ -33,15 +33,15 @@ interface LogInForm {
 
 export  class LoginComponent {
     hide = true;
-  
+
     formBuilder = inject(FormBuilder);
-  
+
     private authService = inject(AuthService);
-  
+
     private router = inject(Router);
-  
+
     logInform: FormGroup<LogInForm> = this.formBuilder.group({
-      email: this.formBuilder.control('', {
+        email: this.formBuilder.control('', {
         validators: [Validators.required, Validators.email],
         nonNullable: true,
       }),
@@ -50,31 +50,31 @@ export  class LoginComponent {
         nonNullable: true,
       }),
     });
-  
+
     get isEmailValid(): string | boolean {
       const control = this.logInform.get('email');
-  
+
       const isInvalid = control?.invalid && control.touched;
-  
+
       if (isInvalid) {
         return control.hasError('required')
           ? 'This field is required'
           : 'Enter a valid email';
       }
-  
+
       return false;
     }
     async logIn(): Promise<void> {
       if (this.logInform.invalid) return;
-  
+
       const credential: Credential = {
         email: this.logInform.value.email || '',
         password: this.logInform.value.password || '',
       };
-  
+
       try {
         await this.authService.logInWithEmailAndPassword(credential);
- 
+
         this.router.navigate(['/dashboard']);
       } catch (error) {
         console.error(error);
