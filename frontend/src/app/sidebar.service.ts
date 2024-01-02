@@ -15,7 +15,7 @@ export class SidebarService {
       label: 'Inicio',
     },
     {
-      link: '/dashboard/',
+      link: '/dashboard/search',
       iconPath: '../../assets/icons/search.svg',
       label: 'Buscar',
     },
