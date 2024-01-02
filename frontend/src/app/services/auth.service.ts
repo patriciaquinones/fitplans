@@ -83,7 +83,7 @@ async callPopUp(provider: AuthProvider): Promise<UserCredential> {
       uid: result.user.uid,
       email: result.user.email,
       firstName: result.user.displayName,
-      // Add any other user properties you need
+      
     });
 
     return result;
