@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { sendEmailVerification } from 'firebase/auth';
 import {
   Auth,
   AuthProvider,
@@ -27,27 +28,29 @@ export class AuthService {
 
   async signUpWithEmailAndPassword(credential: Credential): Promise<UserCredential> {
     try {
+      const result = await createUserWithEmailAndPassword(
+        this.auth,
+        credential.email,
+        credential.password
+      );
 
-    const result= createUserWithEmailAndPassword(
-      this.auth,
-      credential.email,
-      credential.password
-    );
-      // Get Firestore instance
+      // Send email verification
+      if (result.user) {
+        await sendEmailVerification(result.user);
+      }
+
       const db = getFirestore();
+      await addDoc(collection(db, 'newuser'), {
+        uid: result.user.uid,
+        email: result.user.email,
+        firstName: credential.firstName,
+      });
 
-     // Add the user to the 'newUsers' collection
-     await addDoc(collection(db, "newuser"), {
-      uid: (await result).user.uid,
-      email: (await result).user.email,
-      firstName:credential.firstName,
-    
-    });
-    return result;
-  } catch (error: any) {
-    return error;
+      return result;
+    } catch (error: any) {
+      return error;
+    }
   }
-}
 
 
 logInWithEmailAndPassword(credential: Credential) {
@@ -81,7 +84,7 @@ async callPopUp(provider: AuthProvider): Promise<UserCredential> {
       uid: result.user.uid,
       email: result.user.email,
       firstName: result.user.displayName,
-      
+
     });
 
     return result;
