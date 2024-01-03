@@ -9,6 +9,8 @@ import { PlansComponent } from './dashboard/plans/plans.component';
 import { PaymentsComponent } from './dashboard/payments/payments.component';
 import { CaloriesComponent } from './dashboard/calories/calories.component';
 import { CheckoutComponent } from './dashboard/checkout/checkout.component';
+import { SearchComponent } from './dashboard/search/search.component';
+import { ExerciseComponent } from './dashboard/exercise/exercise.component';
 
 
 export const routes: Routes = [
@@ -31,6 +33,8 @@ export const routes: Routes = [
       { path: 'payments', component: PaymentsComponent },
       { path: 'calories', component: CaloriesComponent },
       { path: 'checkout', component: CheckoutComponent },
+      { path: 'search', component: SearchComponent },
+      { path: 'exercise/:id', component: ExerciseComponent },
     ],
   },
 ];

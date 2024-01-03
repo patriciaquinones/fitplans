@@ -1,0 +1,19 @@
+button {
+    /* Estilos generales para el botón de tipo "submit" aquí */
+
+    @media (max-width: 516px) {
+        /* Estilos específicos para pantallas pequeñas aquí */
+        background: url('../../../assets/icons/plusIcon.svg') center center no-repeat;
+        /* Ajusta otros estilos según tus necesidades */
+        width: 15px;
+        height: 15px;
+        border: none;
+        cursor: pointer;
+        background-color: red;
+        color: transparent;
+        padding: 10px;
+        /* Ajusta el padding según tus necesidades */
+        box-sizing: content-box;
+        border-radius: 9999px;
+    }
+}

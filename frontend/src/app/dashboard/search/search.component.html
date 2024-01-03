@@ -1,0 +1,71 @@
+<section id="rutine" class="container mx-auto w-full h-full max-w-5xl">
+    <div class="bg-black">
+        <!--Title-->
+        <h1 class="text-white text-2xl text-center font-semibold mb-2 md:text-left md:text-4xl md:font-medium">
+            Encuentra Tu Rutina Perfecta
+        </h1>
+
+        <!-- Search bar -->
+        <form [formGroup]="search" (ngSubmit)="searching()" class="flex">
+            <input type="text" name="search" placeholder="Buscar una rutina de entrenamiento"
+                formControlName="words"
+                class="bg-secondary-200 rounded-full placeholder:text-white text-white text-xs sm:text-base w-full md:w-3/4 md:mr-5 my-5" />
+            <button type="submit" class="bg-primary text-white rounded-full px-4 py-2 my-5 hover:opacity-75">
+                Buscar
+            </button>
+        </form>
+
+        <!-- Filter by category -->
+        <div>
+            <h2 class="text-white text-xl font-bold mb-2">Categorias</h2>
+            <div class="flex justify-center items-center gap-2 md:gap-5 lg:gap-5 lg:ml-2">
+                <button (click)="filter(['lower legs', 'upper legs'])"
+                    class="text-center h-20 2xs:w-20 xs:w-44 text-xs sm:text-sm rounded-lg bg-secondary-200 text-white font-semibold hover:opacity-75">
+                    <img src="../../../assets/icons/leg.svg" alt="leg icon" class="mx-auto" />
+                    Piernas
+                </button>
+                <button (click)="filter(['cardio'])"
+                    class="text-center h-20 2xs:w-20 xs:w-44 text-xs sm:text-sm rounded-lg bg-secondary-200 text-white font-semibold hover:opacity-75">
+                    <img src="../../../assets/icons/cardio.svg" alt="Cardio icon" class="mx-auto" />
+                    Cardio
+                </button>
+                <button (click)="filter(['lower arms', 'upper arms'])"
+                    class="text-center h-20 2xs:w-20 xs:w-44 text-xs sm:text-sm rounded-lg bg-secondary-200 text-white font-semibold hover:opacity-75">
+                    <img src="../../../assets/icons/arm.svg" alt="arm icon" class="mx-auto" />
+                    Brazos
+                </button>
+                <button (click)="filter(['chest'])"
+                    class="text-center h-20 2xs:w-20 xs:w-44 text-xs sm:text-sm rounded-lg bg-secondary-200 text-white font-semibold hover:opacity-75">
+                    <img src="../../../assets/icons/chest.svg" alt="chest icon" class="mx-auto" />
+                    Pecho
+                </button>
+                <button (click)="filter(['shoulders'])"
+                    class="text-center h-20 2xs:w-20 xs:w-44 text-xs sm:text-sm rounded-lg bg-secondary-200 text-white font-semibold hover:opacity-75">
+                    <img src="../../../assets/icons/shoulders.svg" alt="shoulders icon" class="mx-auto" />
+                    Hombros
+                </button>
+            </div>
+        </div>
+        <!--card -->
+        <div class="py-5 rounded-lg max-w-5xl mx-auto">
+            <div class="flex flex-wrap justify-center items-center gap-5 mx-auto">
+                <a [routerLink]="['/dashboard/exercise', exercise.id]" *ngFor="let exercise of result"
+                    class="flex flex-col w-80 sm:w-60 md:w-48 lg:w-52 bg-secondary-300 items-center p-3 rounded-lg cursor-pointer">
+                    <img [src]="exercise.gifUrl" alt="Exercise gift" class="rounded-md img-responsive">
+                    <span class="w-full text-white mt-2 font-semibold overflow-hidden">
+                        <p class="bg-primary py-px px-4 rounded-lg w-fit float-right"
+                            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60%;">
+                            {{exercise.target}}</p>
+                    </span>
+                    <hr class="h-px w-full border-0 bg-black my-2">
+                    <p class="text-white font-bold self-start truncate w-full">{{exercise.name}}</p>
+                </a>
+            </div>
+        </div>
+        <!-- Button to show more exercises -->
+        <button id="showMore" (click)="showMore()" *ngIf="result.length > 0"
+            class="block bg-primary text-white text-xs sm:text-base font-semibold rounded-full mx-auto px-4 py-2 my-5 hover:opacity-75">
+            Ver más
+        </button>
+    </div>
+</section>
