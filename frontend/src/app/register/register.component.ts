@@ -69,6 +69,19 @@ formBuilder = inject(FormBuilder);
     }
   }
 }
+async signInWithGoogleProvider(): Promise<void> {
+  try {
+    const user = await this.authService.signInWithGoogleProvider()        ;
+    console.log(user);
+    this.router.navigate(['/dashboard']);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+
+
 
   constructor(private router: Router) {}
   goToLogin() {

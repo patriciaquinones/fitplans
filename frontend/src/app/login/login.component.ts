@@ -40,7 +40,7 @@ export  class LoginComponent {
 
     private router = inject(Router);
 
-    logInform: FormGroup<LogInForm> = this.formBuilder.group({
+     logInform: FormGroup<LogInForm> = this.formBuilder.group({
         email: this.formBuilder.control('', {
         validators: [Validators.required, Validators.email],
         nonNullable: true,
@@ -74,14 +74,21 @@ export  class LoginComponent {
 
       try {
         await this.authService.logInWithEmailAndPassword(credential);
-
         this.router.navigate(['/dashboard']);
       } catch (error) {
         console.error(error);
       }
     }
 
-  constructor() {}
+    async signInWithGoogleProvider(): Promise<void> {
+      try {
+        const user = await this.authService.signInWithGoogleProvider()        ;
+        console.log(user);
+        this.router.navigate(['/dashboard']);
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
   goToRegister() {
     this.router.navigate(['/register']);

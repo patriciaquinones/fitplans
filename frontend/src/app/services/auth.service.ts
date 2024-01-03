@@ -50,21 +50,19 @@ export class AuthService {
 }
 
 
-  logInWithEmailAndPassword(credential: Credential) {
-    return signInWithEmailAndPassword(
-      this.auth,
-      credential.email,
-      credential.password
-    );
-  }
-
+logInWithEmailAndPassword(credential: Credential) {
+  return signInWithEmailAndPassword(
+    this.auth,
+    credential.email,
+    credential.password
+  );
+}
   logOut(): Promise<void> {
     return this.auth.signOut();
   }
 
   // google provider
 
- 
 signInWithGoogleProvider(): Promise<UserCredential> {
   const provider = new GoogleAuthProvider();
 
