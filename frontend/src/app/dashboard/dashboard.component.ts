@@ -23,4 +23,8 @@ export class DashboardComponent {
   toggleSidebar() {
     this.sidebarService.toggleSidebar();
   }
+ 
+  closeSidebar() {
+    this.sidebarService.triggerCloseSidebar();
+  }
 }

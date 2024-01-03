@@ -17,7 +17,7 @@
         </div>
     </nav>
     <!-- The default sidebar for the Dashboard on the left-->
-    <aside id="sidebar" class="fixed top-0 left-0 z-40 w-24 h-screen md:block 2xs:hidden" aria-label="Sidebar">
+    <aside id="sidebar" class="fixed top-0 left-0 z-40 w-24 xl:w-60 h-screen md:block 2xs:hidden" aria-label="Sidebar">
         <div class="flex flex-col justify-center items-center bg-black h-[4.5rem]">
             <ul>
                 <li class="bg-black">
@@ -28,16 +28,16 @@
                 </li>
             </ul>
         </div>
-        <div class="h-full px-3 py-4 overflow-y-auto bg-primary">
+        <div class="h-full px-3 py-6 overflow-y-auto bg-primary">
             <!-- The sidebar links with their icons -->
-            <ul class="space-y-2 font-medium">
+            <ul class="space-y-1 font-medium">
                 <li *ngFor="let menuItem of menuItems">
                     <a [routerLink]="menuItem.link"
-                        class="flex flex-col items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
+                        class="flex flex-col xl:flex-row items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
                         <img [src]="menuItem.iconPath"
-                            class="w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                            class="w-8 h-8 text-white transition duration-75 group-hover:text-white"
                             aria-hidden="true" />
-                        <span class="text-sm">{{ menuItem.label }}</span>
+                        <span class="xl:ml-4">{{ menuItem.label }}</span>
                     </a>
                 </li>
             </ul>
@@ -45,7 +45,7 @@
     </aside>
     <app-dashside></app-dashside>
     <!-- Main content -->
-    <div class="p-4 md:pl-32 md:pt-20 bg-black">
+    <div class="p-4 md:pl-32 xl:pl-64 md:pt-20 bg-black" (click)="closeSidebar()">
         <div class="row">
             <div class="col-md-12">
                 <router-outlet></router-outlet>
