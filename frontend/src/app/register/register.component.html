@@ -77,8 +77,8 @@
                     </div>
 
                     <!-- Social login buttons -->
-                    <a  (click)="signInWithGoogleProvider() " class="mb-3 flex w-full items-center justify-center rounded px-7 pb-2.5 pt-3 text-center text-base font-medium leading-normal text-white shadow-[#4285D3] transition duration-150 ease-in-out hover:bg-opacity-75 hover:shadow-[#4285D3] focus:bg-primary-600 focus:shadow-[#4285D3] focus:outline-none focus:ring-0 active:bg-opacity-75 active:shadow-[#4285D3] bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-[#4285F4]/50"
-                         role="button">
+                    <button type="button" class="mb-3 flex w-full items-center justify-center rounded px-7 pb-2.5 pt-3 text-center text-base font-medium leading-normal text-white shadow-[#4285D3] transition duration-150 ease-in-out hover:bg-opacity-75 hover:shadow-[#4285D3] focus:bg-primary-600 focus:shadow-[#4285D3] focus:outline-none focus:ring-0 active:bg-opacity-75 active:shadow-[#4285D3] bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-[#4285F4]/50"
+                        (click)="signInWithGoogle()">
                         <!-- Google -->
                         <svg class="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab"
                             data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
@@ -87,7 +87,7 @@
                             </path>
                         </svg>
                         Continua con Google
-                    </a>
+                    </button>
                 </form>
             </div>
             <!-- Right column container with the image-->
