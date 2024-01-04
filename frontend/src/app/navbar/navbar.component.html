@@ -1,8 +1,8 @@
 <nav class="bg-black">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+    <div class="max-w-screen-4xl flex flex-wrap items-center justify-between mx-auto px-4 py-2 md:p-6 lg:px-20">
         <!--The logo on the right of the nav-->
         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="../../assets/icons/logo.svg" class="h-14" alt="Logo fitplans" />
+            <img src="../../assets/icons/logo.svg" class="h-14 lg:h-20" alt="Logo fitplans" />
         </a>
         <!--The hamburger button on the left of the nav-->
         <button (click)="toggleSidebar()" data-collapse-toggle="navbar" type="button"
@@ -12,12 +12,12 @@
             <img class="w-14 h-14" aria-hidden="true" src="../../assets/icons/hamburger.svg" alt="button hamburguesa" />
         </button>
         <!--The nav links on the right of the nav-->
-        <div class="hidden w-full md:block md:w-auto p-4" id="navbar">
+        <div class="hidden w-full md:block md:w-auto py-14" id="navbar">
             <ul
-                class="text-white font-semibold flex flex-col md:p-0 mt-4 mr-4 border rounded-lg md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0">
+                class="text-white font-semibold flex flex-col md:p-0 mt-4 mr-4 md:mr-1 lg:mr-5 border rounded-lg md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0">
                 <li *ngFor="let navbarItem of navbarItems">
                     <a [href]="navbarItem.link"
-                        class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0">{{
+                        class="block py-2 px-3 md:px-3.5 md:py-0 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary">{{
                         navbarItem.label }}
                     </a>
                 </li>
