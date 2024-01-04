@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class RoutineService {
   private apiUrl = 'https://exercisedb.p.rapidapi.com/exercises';
   private headers = {
-    'X-RapidAPI-Key': '16372be625mshfc61c3ec75b1365p13c415jsn7862e9ac1c37',
+    'X-RapidAPI-Key': '1c2577cea6msh77c7933b47f0c0fp16caf9jsnec08502729a1',
     'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
   };
 

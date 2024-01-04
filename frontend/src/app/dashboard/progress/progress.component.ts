@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './progress.component.html',
   styleUrl: './progress.component.css',
 })
+
+//Dont add this to the database
 export class ProgressComponent {
   lastExercise = [
     {

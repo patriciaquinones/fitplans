@@ -20,7 +20,7 @@ ngOnInit(): void {
 }
 
   onButtonClick() {
-    fetch('https://api.paypal.com/v1/payments/payment', {
+    fetch('https://api-m.sandbox.paypal.com/v1/oauth2/token', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

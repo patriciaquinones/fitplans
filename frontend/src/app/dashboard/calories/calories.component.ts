@@ -20,7 +20,7 @@ export class CaloriesComponent {
   // Form options
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      units: ['imperial'],
+      units: ['imperial'], //Estos son campos de tablas para la base de datos de firebase
       gender: ['femenino'],
       age: [null],
       height: [null],

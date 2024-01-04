@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AuthService, Credential } from '../services/auth.service';
 import { inject } from '@angular/core';
 import { ButtonProviders } from '../providers/button-providers.component';
+import { ToastifyService } from '../services/toastify.service';
 
 import {
   FormBuilder,
@@ -44,6 +45,7 @@ export class LoginComponent {
       nonNullable: true,
     }),
   });
+ 
   
   // To call it from the button
   async signInWithGoogle(): Promise<void> {
@@ -73,6 +75,7 @@ export class LoginComponent {
     const credential: Credential = {
       email: this.logInform.value.email || '',
       password: this.logInform.value.password || '',
+      
     };
 
     try {
@@ -81,10 +84,17 @@ export class LoginComponent {
       this.router.navigate(['/dashboard']);
     } catch (error) {
       console.error(error);
+      this.toastifyService.showToast('error');
     }
   }
 
-  constructor() {}
+constructor(
+private toastifyService: ToastifyService
+
+
+  ) {
+
+  }
 
   goToRegister() {
     this.router.navigate(['/register']);
