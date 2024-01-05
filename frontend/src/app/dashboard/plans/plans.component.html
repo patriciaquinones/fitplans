@@ -112,10 +112,12 @@
                     <span class="text-secondary-100">/Mensual</span>
                 </div>
                 <!-- Button or link -->
-                <button (click)="onButtonClick()"
+                <button (click)="renderPaypalButton()" id="myPaypalButtons"
     class="text-white bg-primary hover:bg-opacity-90 focus:ring-4 focus:ring-primary font-semibold rounded-lg text-xs mx-auto  mb-0 w-36 py-1.5 text-center cursor-pointer">Obtener</button>
+    <div id="paypal-button-container"></div>
             </div>
         </div>
     </div>
+    <script src="https://www.paypal.com/sdk/js?client-id=AZ99lrz028ICNW9UzlJnruNd3UAkEzoEAQ9t4CbmCkt6Sldc9F9FV0FCecQHX5Xw5hk5r8PzRlxer54I"></script>
 
 </section>

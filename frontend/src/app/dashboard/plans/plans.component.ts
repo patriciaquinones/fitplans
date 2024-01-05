@@ -1,37 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 
+declare let  paypal: any; // Asegúrate de importar la biblioteca de PayPal
+
 @Component({
   selector: 'app-plans',
-  standalone: true,
-  imports: [],
   templateUrl: './plans.component.html',
   styleUrls: ['./plans.component.css']
 })
 export class PlansComponent implements OnInit {
-disabler!: boolean;
 
-constructor(){
-  this.disabler = false;
-}
+  constructor() { }
 
+  ngOnInit(): void {
+  }
 
-ngOnInit(): void {
-// this.disabler = false;
-}
-
-  onButtonClick() {
-    fetch('https://api-m.sandbox.paypal.com/v1/oauth2/token', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'ECSt0U6gRHWjHJ66NPYRRLCDteDzPY5qBkB0Ghi0QAAgT1o1wg64bDEfT7i9JK6d0dFxopxvD5jnYn7i'
-        },
-        body: JSON.stringify({
-            // Aquí irían los detalles de la transacción
-        })
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch((error) => console.error('Error:', error));
+  renderPaypalButton(): void {
+    paypal.Buttons({
+      createOrder: function(data: any, actions: any) {
+        // Set up the transaction
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '100.00'
+            }
+          }]
+        });
+      },
+      onApprove: function(data: any, actions: any) {
+        // Capture the funds from the transaction
+        return actions.order.capture().then(function(details: any) {
+          // Show a success message to the buyer
+          alert('Transaccion realizada con exito');
+        });
+      }
+    }).render('#paypal-button-container');
   }
 }
