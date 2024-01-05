@@ -6,6 +6,7 @@ import { AuthService, Credential } from '../services/auth.service';
 import { inject } from '@angular/core';
 import { ButtonProviders } from '../providers/button-providers.component';
 import { ToastifyService } from '../services/toastify.service';
+import { ToastifyService } from '../services/toastify.service';
 
 import {
   FormBuilder,
@@ -45,8 +46,7 @@ export class LoginComponent {
       nonNullable: true,
     }),
   });
- 
-  
+
   // To call it from the button
   async signInWithGoogle(): Promise<void> {
     try {
@@ -58,7 +58,6 @@ export class LoginComponent {
 
   get isEmailValid(): string | boolean {
     const control = this.logInform.get('email');
-
     const isInvalid = control?.invalid && control.touched;
 
     if (isInvalid) {
@@ -69,37 +68,42 @@ export class LoginComponent {
 
     return false;
   }
-  async logIn(): Promise<void> {
-    if (this.logInform.invalid) return;
+
+  // To call it from the form
+  async login() {
+    const email = this.logInform.value.email || '';
+    const password = this.logInform.value.password || '';
 
     const credential: Credential = {
-      email: this.logInform.value.email || '',
-      password: this.logInform.value.password || '',
-      
+      email,
+      password,
     };
 
     try {
-      await this.authService.logInWithEmailAndPassword(credential);
-
-      this.router.navigate(['/dashboard']);
+      if (this.logInform.invalid) {
+        this.ToastifyService.showToast('Email o contraseña invalidos');
+      } else {
+        await this.authService.logInWithEmailAndPassword(credential);
+        this.goToDashboard();
+      }
     } catch (error) {
-      console.error(error);
+      console.log(error);
       this.toastifyService.showToast('error');
+      this.ToastifyService.showToast('Email o contraseña invalidos');
     }
   }
 
-constructor(
-private toastifyService: ToastifyService
-
-
-  ) {
-
-  }
+  constructor(private ToastifyService: ToastifyService) {}
 
   goToRegister() {
     this.router.navigate(['/register']);
   }
   goToDashboard() {
     this.router.navigate(['/dashboard']);
+  }
+
+  //to hide or show the password
+  togglePasswordVisibility(): void {
+    this.hide = !this.hide;
   }
 }

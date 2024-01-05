@@ -3,12 +3,9 @@ form{
 }
 
 button[type='submit'] {
-    /* Estilos generales para el botón de tipo "submit" aquí */
 
     @media (max-width: 575.98px) {
-        /* Estilos específicos para pantallas pequeñas aquí */
         background: url('../../../assets/icons/search.svg') center center no-repeat;
-        /* Ajusta otros estilos según tus necesidades */
         width: 25px;
         height: 16px;
         border: none;
@@ -16,7 +13,6 @@ button[type='submit'] {
         background-color: red;
         color: transparent;
         padding: 10px;
-        /* Ajusta el padding según tus necesidades */
         box-sizing: content-box;
         border-radius: 0 9999px 9999px 0;
     }
@@ -24,15 +20,12 @@ button[type='submit'] {
 
 input[type="text"] {
     @media (max-width: 575.98px) {
-        /* Ajusta los estilos según tus necesidades */
         width: 100%;
         border: none;
         border-radius: 9999px 0 0 9999px;
-        /* Aplica un borde redondeado solo en la esquina izquierda */
         padding: 10px;
         box-sizing: content-box;
         margin-right: 0;
-        /* Asegura que el padding esté incluido en el tamaño total */
     }
 }
 

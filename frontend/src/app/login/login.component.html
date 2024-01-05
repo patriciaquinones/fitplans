@@ -1,19 +1,21 @@
-<section class="h-full bg-black mx-auto">
-    <div class="container h-full px-6 py-10 mx-auto">
-        <div class="flex h-full flex-wrap items-center justify-center lg:justify-between">
+<section class="w-full h-full bg-black mx-auto">
+    <div class="flex flex-col container w-full h-full px-4 py-10 mx-auto">
+        <div
+            class="flex flex-col w-full mx-auto items-center justify-center lg:flex-row lg:gap-10 lg:justify-between xl:justify-center">
             <!-- left column container with form -->
-            <div class="md:w-8/12 lg:ml-6 lg:w-5/12">
-                <form [formGroup]="logInform" (ngSubmit)="logIn()">
-                    <a (click)="goToRegister()" class="text-secondary-100 hover:underline cursor-pointer">¿No tienes una cuenta? Registrate</a>
+            <div class="w-full lg:ml-6 lg:w-5/12 3xl:w-4/12 max-w-xl">
+                <form [formGroup]="logInform" (ngSubmit)="login()">
+                    <a (click)="goToRegister()" class="text-secondary-100 hover:underline cursor-pointer">¿No tienes una
+                        cuenta? Registrate</a>
 
                     <!-- Email input -->
                     <label for="inputEmail"
                         class="block mt-10 pointer-events-none max-w-[90%] leading-[2.15] text-secondary-100">Correo
                     </label>
                     <div class="relative mb-6">
-                        <input type="text"
+                        <input type="email"
                             class="peer block min-h-[auto] w-full rounded border-0 bg-secondary-100 px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                            id="inputEmail" placeholder="Email address" />
+                            id="inputEmail" formControlName="email" required />
                     </div>
 
                     <!-- Password input -->
@@ -21,9 +23,14 @@
                         class="block pointer-events-none max-w-[90%] leading-[2.15] text-secondary-100">Contraseña
                     </label>
                     <div class="relative mb-6">
-                        <input type="password"
+                        <input type="{{ hide ? 'password' : 'text' }}"
                             class="peer block min-h-[auto] w-full rounded border-0 bg-secondary-100 px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                            id="inputPassword" placeholder="Password" />
+                            id="inputPassword" formControlName="password" required />
+                        <button type="button" class="absolute top-1/2 right-2 transform -translate-y-1/2 cursor-pointer"
+                            (click)="togglePasswordVisibility()">
+                            <img [src]=" hide ? '../../assets/icons/show.svg' : '../../assets/icons/hide.svg'"
+                                alt="Visualizar Contraseña" />
+                        </button>
                     </div>
 
                     <!-- Remember me checkbox -->
@@ -45,7 +52,7 @@
                     </div>
 
                     <!-- Submit button -->
-                    <button (click)= "logIn()" type="submit"
+                    <button type="Submit"
                         class="inline-block w-full rounded bg-primary px-7 pb-2.5 pt-3 text-base font-medium leading-normal text-white transition duration-150 ease-in-out hover:bg-opacity-75 focus:bg-primary-600 focus:outline-none focus:ring-0 active:bg-primary-700 shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
                         Iniciar Sessión
                     </button>
@@ -59,7 +66,8 @@
                     </div>
 
                     <!-- Social login buttons -->
-                    <button (click)="signInWithGoogle()" class="mb-3 flex w-full items-center justify-center rounded px-7 pb-2.5 pt-3 text-center text-base font-medium leading-normal text-white shadow-[#4285D3] transition duration-150 ease-in-out hover:bg-opacity-75 hover:shadow-[#4285D3] focus:bg-primary-600 focus:shadow-[#4285D3] focus:outline-none focus:ring-0 active:bg-opacity-75 active:shadow-[#4285D3] bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-[#4285F4]/50">
+                    <button (click)="signInWithGoogle()"
+                        class="mb-3 flex w-full items-center justify-center rounded px-7 pb-2.5 pt-3 text-center text-base font-medium leading-normal text-white shadow-[#4285D3] transition duration-150 ease-in-out hover:bg-opacity-75 hover:shadow-[#4285D3] focus:bg-primary-600 focus:shadow-[#4285D3] focus:outline-none focus:ring-0 active:bg-opacity-75 active:shadow-[#4285D3] bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-[#4285F4]/50">
                         <!-- Google -->
                         <svg class="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab"
                             data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
@@ -72,8 +80,8 @@
                 </form>
             </div>
             <!-- Right column container with the image-->
-            <div class="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
-                <img src="../../assets/images/loginMan.svg" class="w-[97%] xs:w-[60%] sm:w-[50%] md:w-full max-w-lg mx-auto"
+            <div class="flex justify-center mb-12 md:mb-0">
+                <img src="../../assets/images/loginMan.svg" class="w-[97%] xs:w-full max-w-xl mx-auto"
                     alt="A man showing his belly" />
             </div>
         </div>
