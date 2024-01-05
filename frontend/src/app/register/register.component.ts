@@ -13,6 +13,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { ToastifyService } from '../services/toastify.service';
 
 interface SignUpForm {
   firstName: FormControl<string>;
@@ -50,22 +51,32 @@ export class RegisterComponent {
   private authService = inject(AuthService);
 
   async signUp(): Promise<void> {
-    if (this.registerForm.invalid) return;
-    {
+    try {
       const credential: Credential = {
-        email: this.registerForm.value.email || '',
-        password: this.registerForm.value.password || '',
-        firstName: this.registerForm.value.firstName || '',
+        email: this.registerForm.get('email')?.value ?? '',
+        password: this.registerForm.get('password')?.value ?? '',
+        firstName: this.registerForm.get('firstName')?.value ?? '',
       };
 
-      try {
-        const UserCredential =
-          await this.authService.signUpWithEmailAndPassword(credential);
-        console.log(UserCredential);
-        this.router.navigate(['/dashboard']);
-      } catch (error) {
-        console.log(this.registerForm.value);
-      }
+      if (
+        this.registerForm.get('email')?.hasError('email') ||
+        credential.password == '' ||
+        credential.firstName == ''
+      ) {
+        this.ToastifyService.showToast(
+          'Verifique los datos ingresados e intente nuevamente.'
+        );
+        return;
+      } else {
+        this.ToastifyService.showToast('Usuario registrado correctamente.');
+        await this.authService.signUpWithEmailAndPassword(credential);
+        this.router.navigate(['/login']);
+      }      
+    } catch (error) {
+      console.log(error);
+      this.ToastifyService.showToast(
+        'Ocurrio un error al registrar el usuario, intente más tarde'
+      );
     }
   }
 
@@ -75,11 +86,23 @@ export class RegisterComponent {
       await this.buttonProviders.signUpWithGoogle();
     } catch (error) {
       console.log(error);
+      this.ToastifyService.showToast(
+        'Ocurrio un error al iniciar sesion con Google, intente más tarde'
+      );
     }
   }
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private ToastifyService: ToastifyService
+  ) {}
+
   goToLogin() {
     this.router.navigate(['/login']);
+  }
+
+  //to hide or show the password
+  togglePasswordVisibility(): void {
+    this.hide = !this.hide;
   }
 }

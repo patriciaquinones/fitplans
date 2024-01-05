@@ -1,0 +1,13 @@
+input:valid {
+    border: 1px solid rgb(71, 99, 202);
+}
+
+input:invalid {
+    border: 1px solid red;
+}
+
+input:focus, select:focus, select, input.form-control:focus {
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+}

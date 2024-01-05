@@ -1,9 +1,9 @@
-<section class="h-full bg-black mx-auto">
-    <div class="container h-full px-6 py-10 mx-auto">
-        <div class="flex h-full flex-wrap items-center justify-center lg:justify-between">
-            <!-- left column container with form -->
-            <div class="md:w-8/12 lg:ml-6 lg:w-5/12">
-                <form  [formGroup]="registerForm" (ngSubmit)="signUp()" >
+<section class="w-full h-full bg-black mx-auto">
+    <div class="flex flex-col container w-full h-full px-4 py-10 mx-auto">
+        <div
+        class="flex flex-col w-full mx-auto items-center justify-center lg:flex-row lg:gap-10 lg:justify-between xl:justify-center">            <!-- left column container with form -->
+            <div class="w-full lg:ml-6 lg:w-5/12 3xl:w-4/12 max-w-xl">
+                <form [formGroup]="registerForm" (ngSubmit)="signUp()">
                     <a (click)="goToLogin()" class="text-secondary-100 hover:underline cursor-pointer">¿Tienes una
                         cuenta? Inicia sessión</a>
 
@@ -14,7 +14,7 @@
                     <div class="relative mb-6">
                         <input type="text" formControlName="firstName"
                             class="peer block min-h-[auto] w-full rounded border-0 bg-secondary-100 px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                            id="inputName" placeholder="Nombre completo" />
+                            id="inputName" required />
                     </div>
 
                     <!-- Email input -->
@@ -22,10 +22,10 @@
                         class="block pointer-events-none max-w-[90%] leading-[2.15] text-secondary-100">Correo
                     </label>
                     <div class="relative mb-6">
-                        <input type="text" formControlName="email"
+                        <input type="email" formControlName="email"
                             class="peer block min-h-[auto] w-full rounded border-0 bg-secondary-100 px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                            id="inputEmail" placeholder="Correo" />
-                            
+                            id="inputEmail" required />
+
                     </div>
 
                     <!-- Password input -->
@@ -33,9 +33,14 @@
                         class="block pointer-events-none max-w-[90%] leading-[2.15] text-secondary-100">Contraseña
                     </label>
                     <div class="relative mb-6">
-                        <input type="password" formControlName="password"
+                        <input type="{{ hide ? 'password' : 'text' }}" formControlName="password"
                             class="peer block min-h-[auto] w-full rounded border-0 bg-secondary-100 px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                            id="inputPassword" placeholder="Contraseña" />
+                            id="inputPassword" required />
+                        <button type="button" class="absolute top-1/2 right-2 transform -translate-y-1/2 cursor-pointer"
+                            (click)="togglePasswordVisibility()">
+                            <img [src]=" hide ? '../../assets/icons/show.svg' : '../../assets/icons/hide.svg'"
+                                alt="Visualizar Contraseña" />
+                        </button>
                     </div>
 
                     <!-- Password Confirmation input -->
@@ -44,9 +49,14 @@
                         Contraseña
                     </label>
                     <div class="relative mb-6">
-                        <input type="password"
+                        <input type="{{ hide ? 'password' : 'text' }}"
                             class="peer block min-h-[auto] w-full rounded border-0 bg-secondary-100 px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                            id="inputConfirmPassword" placeholder="Confirmar Contraseña" />
+                            id="inputConfirmPassword" formControlName="password" required />
+                        <button type="button" class="absolute top-1/2 right-2 transform -translate-y-1/2 cursor-pointer"
+                            (click)="togglePasswordVisibility()">
+                            <img [src]=" hide ? '../../assets/icons/show.svg' : '../../assets/icons/hide.svg'"
+                                alt="Visualizar Contraseña" />
+                        </button>
                     </div>
 
                     <!-- Remember me checkbox -->
@@ -77,7 +87,8 @@
                     </div>
 
                     <!-- Social login buttons -->
-                    <button type="button" class="mb-3 flex w-full items-center justify-center rounded px-7 pb-2.5 pt-3 text-center text-base font-medium leading-normal text-white shadow-[#4285D3] transition duration-150 ease-in-out hover:bg-opacity-75 hover:shadow-[#4285D3] focus:bg-primary-600 focus:shadow-[#4285D3] focus:outline-none focus:ring-0 active:bg-opacity-75 active:shadow-[#4285D3] bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-[#4285F4]/50"
+                    <button type="button"
+                        class="mb-3 flex w-full items-center justify-center rounded px-7 pb-2.5 pt-3 text-center text-base font-medium leading-normal text-white shadow-[#4285D3] transition duration-150 ease-in-out hover:bg-opacity-75 hover:shadow-[#4285D3] focus:bg-primary-600 focus:shadow-[#4285D3] focus:outline-none focus:ring-0 active:bg-opacity-75 active:shadow-[#4285D3] bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-[#4285F4]/50"
                         (click)="signInWithGoogle()">
                         <!-- Google -->
                         <svg class="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab"
@@ -91,9 +102,9 @@
                 </form>
             </div>
             <!-- Right column container with the image-->
-            <div class="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
-                <img src="../../assets/images/girlRegister.svg"
-                    class="w-[97%] xs:w-[60%] sm:w-[50%] md:w-full max-w-lg mx-auto" alt="A man showing his belly" />
+            <div class="flex justify-center mb-12 md:mb-0">
+                <img src="../../assets/images/girlRegister.svg" class="w-[97%] xs:w-full max-w-xl mx-auto"
+                    alt="A man showing his belly" />
             </div>
         </div>
     </div>
