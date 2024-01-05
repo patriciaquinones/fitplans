@@ -6,7 +6,8 @@ import { AuthService, Credential } from '../services/auth.service';
 import { inject } from '@angular/core';
 import { ButtonProviders } from '../providers/button-providers.component';
 import { ToastifyService } from '../services/toastify.service';
-import { ToastifyService } from '../services/toastify.service';
+
+
 
 import {
   FormBuilder,
@@ -88,7 +89,7 @@ export class LoginComponent {
       }
     } catch (error) {
       console.log(error);
-      this.toastifyService.showToast('error');
+
       this.ToastifyService.showToast('Email o contraseña invalidos');
     }
   }
