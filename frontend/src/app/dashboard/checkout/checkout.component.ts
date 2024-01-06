@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { render } from "creditcardpayments/creditCardPayments";
+let paypal: any;
 
 @Component({
   selector: "app-checkout",

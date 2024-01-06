@@ -31,8 +31,10 @@
 
                 <div class="flex-col justify-center items-center mx-auto">
                     <h2 class="text-lg lg:text-xl text-center font-semibold">Selecciona el método de pago</h2>
-                    <div id="myPaypalButtons"></div>
                 </div>
+                <div id="myPaypalButtons"></div>
+                <p id="result-message"></p>
+                <script src="https://www.paypal.com/sdk/js?client-id=test&components=buttons&vault=true&intent=subscription&enable-funding=card&disable-funding=paylater" data-sdk-integration-source="integrationbuilder_sc"></script>
             </div>
 
             <!-- The image -->
