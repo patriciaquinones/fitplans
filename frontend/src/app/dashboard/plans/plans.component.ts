@@ -9,6 +9,7 @@ declare let  paypal: any; // Asegúrate de importar la biblioteca de PayPal
 })
 export class PlansComponent implements OnInit {
 
+  
   constructor() { }
 
   ngOnInit(): void {
