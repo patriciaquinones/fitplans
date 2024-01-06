@@ -1,39 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterModule} from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 declare let  paypal: any; // Asegúrate de importar la biblioteca de PayPal
 
 @Component({
   selector: 'app-plans',
+  standalone: true,
   templateUrl: './plans.component.html',
-  styleUrls: ['./plans.component.css']
+  styleUrl: './plans.component.css',
+  imports:[RouterOutlet, RouterModule]
 })
-export class PlansComponent implements OnInit {
+export class PlansComponent  {
 
   
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
-  ngOnInit(): void {
+
+  goToCheckout() {
+
+    this.router.navigate(['/dashboard/checkout']);
   }
 
-  renderPaypalButton(): void {
-    paypal.Buttons({
-      createOrder: function(data: any, actions: any) {
-        // Set up the transaction
-        return actions.order.create({
-          purchase_units: [{
-            amount: {
-              value: '100.00'
-            }
-          }]
-        });
-      },
-      onApprove: function(data: any, actions: any) {
-        // Capture the funds from the transaction
-        return actions.order.capture().then(function(details: any) {
-          // Show a success message to the buyer
-          alert('Transaccion realizada con exito');
-        });
-      }
-    }).render('#paypal-button-container');
-  }
+
 }
