@@ -6,7 +6,7 @@
       Transacciones
     </h2>
     <!-- Transactions card -->
-    <div class="flex flex-col w-auto max-w-[60rem] ml-5 bg-secondary-300 p-5 rounded-lg">
+    <div class="flex flex-col w-auto ml-5 bg-secondary-300 p-5 rounded-lg">
       <span class="block text-white bg-primary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-opacity-75 font-semibold rounded-lg text-sm w-full sm:w-auto px-6 py-1.5 mx-auto sm:mr-0 text-center z-20 cursor-pointer">
         27/07/2023
       </span>
@@ -22,11 +22,11 @@
         </thead>
         <tbody class="flex-1 sm:flex-none text-white">
           <tr class="flex flex-col flex-nowrap sm:table-row mb-2 sm:mb-0" *ngFor="let payment of payments">
-            <td class="border-secondary-400 border selection:bg-primary p-3">{{ payment.id }}</td>
-            <td class="border-secondary-400 border selection:bg-primary p-3">{{ payment.name }}</td>
-            <td class="border-secondary-400 border selection:bg-primary p-3">{{ payment.amount }}</td>
-            <td class="border-secondary-400 border selection:bg-primary p-3">{{ payment.status }}</td>
-            <td class="border-secondary-400 border selection:bg-primary p-3">{{ payment.date }}</td>
+            <td class="border-secondary-400 border selection:bg-primary 2xs:text-sm md:text-base lg:text-lg p-3">{{ payment.id }}</td>
+            <td class="border-secondary-400 border selection:bg-primary 2xs:text-sm md:text-base lg:text-lg p-3">{{ payment.name }}</td>
+            <td class="border-secondary-400 border selection:bg-primary 2xs:text-sm md:text-base lg:text-lg p-3">{{ payment.amount }}</td>
+            <td class="border-secondary-400 border selection:bg-primary 2xs:text-sm md:text-base lg:text-lg p-3">{{ payment.status }}</td>
+            <td class="border-secondary-400 border selection:bg-primary 2xs:text-sm md:text-base lg:text-lg p-3">{{ payment.date }}</td>
           </tr>
         </tbody>
       </table>
@@ -40,7 +40,7 @@
       Facturas
     </h2>
     <!-- Invoice card-->
-    <div class="flex flex-col w-auto max-w-[60rem] ml-5 bg-secondary-300 p-5 rounded-lg">
+    <div class="flex flex-col w-auto ml-5 bg-secondary-300 p-5 rounded-lg">
       <span class="block text-white bg-primary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-opacity-75 font-semibold rounded-lg text-sm w-full sm:w-auto px-6 py-1.5 mx-auto sm:mr-0 text-center z-20 cursor-pointer">
         27/07/2023
       </span>
@@ -56,11 +56,11 @@
         </thead>
         <tbody class="flex-1 sm:flex-none text-white">
           <tr class="flex flex-col flex-nowrap sm:table-row mb-2 sm:mb-0" *ngFor="let payment of payments">
-            <td class="border-secondary-400 border selection:bg-primary p-3">{{ payment.id }}</td>
-            <td class="border-secondary-400 border selection:bg-primary p-3">{{ payment.name }}</td>
-            <td class="border-secondary-400 border selection:bg-primary p-3">{{ payment.amount }}</td>
-            <td class="border-secondary-400 border selection:bg-primary p-3">{{ payment.date }}</td>
-            <td class="border-secondary-400 border selection:bg-primary p-3 sm:mx-auto">
+            <td class="border-secondary-400 border selection:bg-primary 2xs:text-sm md:text-base lg:text-lg p-3">{{ payment.id }}</td>
+            <td class="border-secondary-400 border selection:bg-primary 2xs:text-sm md:text-base lg:text-lg p-3">{{ payment.name }}</td>
+            <td class="border-secondary-400 border selection:bg-primary 2xs:text-sm md:text-base lg:text-lg p-3">{{ payment.amount }}</td>
+            <td class="border-secondary-400 border selection:bg-primary 2xs:text-sm md:text-base lg:text-lgp-3">{{ payment.date }}</td>
+            <td class="border-secondary-400 border selection:bg-primary 2xs:text-sm md:text-base lg:text-lg p-3 sm:mx-auto">
               <button class="block hover:opacity-50 text-sm w-full mx-auto text-center cursor-pointer" (click)="downloadInvoice()">
                 <img src="../../../assets/icons/pdf.svg" alt="pdf icon" class="ml-0 sm:mx-auto">
               </button>

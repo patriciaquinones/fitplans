@@ -1,71 +1,71 @@
-<section id="profile" class="container mx-auto w-full h-full max-w-5xl">
-    <div class="bg-black">
+<section id="profile" class="container mx-auto w-full h-screen">
+    <div class="bg-black h-screen">
         <!--Title-->
         <h1 class="text-white text-2xl text-center font-semibold mb-2 md:text-left md:text-4xl md:font-medium">
             Perfil
         </h1>
         <!--card-->
-        <div class="bg-secondary-300 p-5 rounded-lg max-w-5xl mx-auto">
+        <div class="bg-secondary-300 p-5 rounded-lg mx-auto">
             <!--subtitle-->
             <h2 class="text-lg text-center md:text-2xl md:text-left text-white font-medium mb-4 md:ml-10">
                 Información personal
             </h2>
             <!--The form-->
-            <form class="relative block mx-auto w-full z-40">
+            <form class="relative block mx-auto w-full z-40" [formGroup]="profileForm" (ngSubmit)="updateProfile()">
                 <div class="grid md:grid-cols-3 md:gap-2 lg:grid-cols-4 mx-auto w-full">
                     <!-- First row on desktop -->
                     <div class="relative z-0 w-full mb-5 group lg:col-span-2">
-                        <label for="name" class="font-medium text-sm text-white">Nombre</label>
+                        <label for="name" class="font-medium 2xs:text-sm md:text-base lg:text-lg text-white">Nombre</label>
                         <input type="name" name="name" id="name"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                            placeholder=" " required />
+                            class="block py-2.5 px-0 w-full 2xs:text-sm md:text-base lg:text-lg text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " formControlName="name" form required />
                     </div>
                     <div class="relative z-0 w-full mb-5 group lg:col-span-2">
-                        <label for="email" class="font-medium text-sm text-white">Correo Electrónico</label>
+                        <label for="email" class="font-medium 2xs:text-sm md:text-base lg:text-lg text-white">Correo Electrónico</label>
                         <input type="email" name="email" id="email"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                            placeholder=" " required />
+                            class="block py-2.5 px-0 w-full 2xs:text-sm md:text-base lg:text-lg text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " formControlName="email" required />
                     </div>
                     <div class="relative z-0 w-full mb-5 group">
-                        <label for="birthday" class="font-medium text-sm text-white">Fecha de Nacimiento</label>
+                        <label for="birthday" class="font-medium 2xs:text-sm md:text-base lg:text-lg text-white">Fecha de Nacimiento</label>
                         <input type="date" name="birthday" id="birthday"
-                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                            placeholder=" " required />
+                            class="block py-2.5 px-0 w-full 2xs:text-sm md:text-base lg:text-lg text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " formControlName="birthday" required />
                     </div>
                     <!-- Second row on desktop -->
                     <div class="2xs:grid grid-cols-2 gap-2 md:col-span-2">
                         <div class="relative z-0 w-full mb-5 group">
-                            <label for="height" class="font-medium text-sm text-white">Estatura</label>
+                            <label for="height" class="font-medium 2xs:text-sm md:text-base lg:text-lg text-white">Estatura</label>
                             <input type="number" name="height" id="height"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required />
+                                class="block py-2.5 px-0 w-full 2xs:text-sm md:text-base lg:text-lg text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " formControlName="height" required />
                         </div>
                         <div class="relative z-0 w-full mb-5 group">
-                            <label for="weight" class="font-medium text-sm text-white">Peso</label>
+                            <label for="weight" class="font-medium 2xs:text-sm md:text-base lg:text-lg text-white">Peso</label>
                             <input type="number" name="weight" id="weight"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required />
+                                class="block py-2.5 px-0 w-full 2xs:text-sm md:text-base lg:text-lg text-gray-900 bg-white border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " formControlName="weight" required />
                         </div>
                     </div>
                     <div class="relative z-0 w-full mb-5 group">
-                        <label for="gender" class="font-medium text-sm text-white">Sexo</label>
-                        <select name="gender" id="gender"
-                            class="block py-2.5 w-full text-sm bg-white appearance-none focus:outline-none focus:ring-0">
-                            <option *ngFor="let option of options">
+                        <label for="gender" class="font-medium 2xs:text-sm md:text-base lg:text-lg text-white">Sexo</label>
+                        <select name="gender" id="gender" formControlName="gender"
+                            class="block py-2.5 md:py-3 lg:py-3.5 w-full 2xs:text-sm md:text-base lg:text-lg bg-white appearance-none focus:outline-none focus:ring-0">
+                            <option *ngFor="let option of options" [value]="option.gender" class="2xs:text-sm md:text-base lg:text-lg">
                                 {{ option.gender }}
                             </option>
                         </select>
                     </div>
                 </div>
                 <button type="submit"
-                    class="relative block text-white bg-primary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-opacity-75 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mx-auto text-center z-20">
+                    class="relative block text-white bg-primary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-opacity-75 font-medium rounded-lg 2xs:text-sm md:text-base lg:text-lg w-full sm:w-auto px-5 py-2.5 mx-auto text-center z-20">
                     Actualizar
                 </button>
             </form>
             <!-- The image -->
-            <div class="bg-black hidden lg:block relative z-30 mb-10 -mt-10 mx-auto">
+            <div class="bg-black hidden md:block relative z-30 mb-10 -mt-10 mx-auto">
                 <img src="../../../assets/images/womanTraining.svg" alt="Woman training"
-                    class="absolute mx-auto left-0 right-0 w-[33%] xl:w-1/2" />
+                    class="absolute mx-auto left-0 right-0 w-full max-w-xl xl:w-1/2" />
             </div>
         </div>
     </div>

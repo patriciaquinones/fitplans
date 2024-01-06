@@ -1,4 +1,4 @@
-<section id="calories" class="container mx-auto w-full h-full max-w-5xl">
+<section id="calories" class="container mx-auto w-full h-full">
     <div class="bg-black">
         <!-- Title -->
         <h1 class="text-white text-2xl text-center font-semibold mb-2 md:text-left md:text-4xl md:font-medium">
@@ -6,40 +6,40 @@
         </h1>
         <!-- card -->
         <form [formGroup]="form" (ngSubmit)="calculateCalories()"
-            class="flex flex-col justify-center items-center xs:flex-row xs:justify-normal xs:items-stretch gap-4 sm:gap-10 p-5 rounded-lg max-w-5xl mx-auto">
+            class="flex flex-col justify-center items-center xs:flex-row  mt-10 xs:justify-normal xs:items-stretch gap-4 sm:gap-10 p-5 rounded-lg  mx-auto">
             <!-- Units and gender on the left -->
-            <div class="md:w-full h-fit p-5 text-white bg-secondary-300 rounded-lg whitespace-nowrap w-fit">
+            <div class="md:w-full h-fit p-5 text-white bg-secondary-300 rounded-lg whitespace-nowrap ">
                 <h2 class="font-bold mb-2">Unidades</h2>
                 <!-- First radiobuttons section -->
                 <input type="radio" name="units" value="imperial" formControlName="units" (change)="onUnitsChange()"
                     checked class="checked:text-primary checked:ring-1 checked:ring-primary" />
-                <label for="units" class="text-sm ml-1 mr-3">Imperial(Libs)</label>
+                <label for="units" class="2xs:text-sm md:text-base lg:text-lg ml-1 mr-3">Imperial(Libs)</label>
 
                 <input type="radio" name="units" value="metric" formControlName="units" (change)="onUnitsChange()"
                     class="checked:text-primary checked:ring-1 checked:ring-primary" />
-                <label for="units" class="text-sm ml-1">Métrica(Kg)</label>
+                <label for="units" class="2xs:text-sm md:text-base lg:text-lg ml-1">Métrica(Kg)</label>
 
                 <h2 class="font-bold mt-4 mb-2">Sexo</h2>
                 <!-- Second radiobuttons section  -->
                 <input type="radio" name="gender" formControlName="gender" value="femenino" checked
                     class="checked:text-primary checked:ring-1 checked:ring-primary" />
-                <label for="femenino" class="text-sm ml-1 mr-5">Femenino</label>
+                <label for="femenino" class="2xs:text-sm md:text-base lg:text-lg ml-1 mr-5">Femenino</label>
 
                 <input type="radio" name="gender" formControlName="gender" value="masculino"
                     class="checked:text-primary checked:ring-1 checked:ring-primary" />
-                <label for="masculino" class="text-sm ml-1 mr-5">Masculino</label>
+                <label for="masculino" class="2xs:text-sm md:text-base lg:text-lg ml-1 mr-5">Masculino</label>
             </div>
 
             <!-- Section on the right -->
-            <div class="w-full text-sm">
+            <div class="w-full 2xs:text-sm md:text-base lg:text-lg">
                 <input type="number" name="age" formControlName="age" placeholder="Edad"
-                    class="w-full p-2 rounded-lg bg-secondary-300 text-white text-sm mb-2" />
+                    class="w-full p-2 rounded-lg bg-secondary-300 text-white 2xs:text-sm md:text-base lg:text-lg mb-2" />
                 <input type="number" name="height" formControlName="height" placeholder="Altura(cm)"
-                    class="w-full p-2 rounded-lg bg-secondary-300 text-white text-sm mb-2" />
+                    class="w-full p-2 rounded-lg bg-secondary-300 text-white 2xs:text-sm md:text-base lg:text-lg mb-2" />
                 <input type="number" name="weight" formControlName="weight" placeholder="Peso"
-                    class="w-full p-2 rounded-lg bg-secondary-300 text-white text-sm mb-2" />
+                    class="w-full p-2 rounded-lg bg-secondary-300 text-white 2xs:text-sm md:text-base lg:text-lg mb-2" />
                 <select type="text" name="activity" formControlName="activity"
-                    class="w-full p-2 rounded-lg text-sm bg-secondary-300 text-white mb-2 cursor-pointer">
+                    class="w-full p-2 rounded-lg 2xs:text-sm md:text-base lg:text-lg bg-secondary-300 text-white mb-2 cursor-pointer">
                     <option value="sedentario">Sedentario</option>
                     <option value="ligero">Ligero</option>
                     <option value="moderado">Moderado</option>
@@ -47,7 +47,7 @@
                     <option value="muy activo">Muy activo</option>
                 </select>
                 <select type="text" name="goal" formControlName="goal"
-                    class="w-full p-2 rounded-lg text-sm bg-secondary-300 text-white mb-2 cursor-pointer">
+                    class="w-full p-2 rounded-lg 2xs:2xs:text-sm md:text-base lg:text-lg md:text-base lg:text-lg bg-secondary-300 text-white mb-2 cursor-pointer">
                     <option value="perder">Perder peso</option>
                     <option value="mantener">Mantener peso</option>
                     <option value="ganar">Ganar peso</option>
@@ -60,13 +60,13 @@
             <!-- Results -->
             <div *ngIf="result !== null">
                 <span
-                    class="block w-full p-5 mx-auto text-center bg-white text-primary font-semibold rounded-xl">Tendrás
+                    class="block w-full p-5 mx-auto 2xs:2xs:text-sm md:text-base lg:text-lg md:text-base lg:text-lg text-center bg-white text-primary font-semibold rounded-xl">Tendrás
                     que consumir: {{ result }}
                 </span>
             </div>
 
             <!-- Image -->
-            <img src="assets/images/calories.svg" alt="calories" class="w-80 mx-auto" />
+            <img src="assets/images/calories.svg" alt="calories" class="w-full max-w-xl mx-auto" />
         </div>
     </div>
     <!-- Modal -->

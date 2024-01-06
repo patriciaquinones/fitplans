@@ -25,11 +25,6 @@ export class SidebarService {
       label: 'Planes',
     },
     {
-      link: '/dashboard/progress',
-      iconPath: '../../assets/icons/progress.svg',
-      label: 'Progreso',
-    },
-    {
       link: '/dashboard/calories',
       iconPath: '../../assets/icons/caloriesIcon.svg',
       label: 'Calorías',
