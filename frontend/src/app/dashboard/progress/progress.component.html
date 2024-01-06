@@ -1,81 +1,101 @@
-<section id="progress" class="container bg-black w-full h-auto mx-auto max-w-5xl">
-    <!--Title-->
+<section id="progress"
+    class="container bg-black max-h-min mx-auto max-w-5xl lg:max-w-4xl 2xl:max-w-6xl 3xl:max-w-[100rem]">
+    <!-- Title -->
     <h1 class="text-white text-2xl text-center font-semibold md:text-left md:text-4xl md:font-medium">Moldea Tu Cuerpo
         Ideal</h1>
-    <div class="flex 2xs:flex-col md:flex-row justify-between w-full mx-auto">
-        <!-- The big image with the woman -->
-        <img src="../../../assets/images/womanProgress.svg" alt="Woman Stretching"
-            class="w-full max-w-md mx-auto md:ml-28 lg:ml-40">
-        <!-- The last exercise done on the right -->
-        <div class="w-60 mx-auto mt-10 mb-10 md:mr-16 lg:mb-0 lg:mr-5 xl:-mr-8">
-            <h2 class="text-2xl md:text-xl lg:text-2xl text-center text-white font-medium mb-4">Ultimo ejercicio</h2>
-            <div *ngFor="let exercise of lastExercise"
-                class="flex flex-col bg-secondary-300 items-center p-3 rounded-lg">
-                <img [src]="exercise.image" alt="Last Exercise">
-                <span
-                    class="bg-primary rounded-lg py-px px-4 text-white mt-2 font-semibold self-end">{{exercise.level}}</span>
-                <hr class="h-px w-full border-0 bg-black my-2">
-                <p class="text-white font-bold self-start">{{exercise.title}}</p>
-            </div>
+
+    <!-- Grid Container -->
+    <div class="flex flex-col gap-2 md:grid md:grid-cols-4 grid-rows-5 md:grid-rows-3 lg:grid-rows-2 w-full">
+        <!-- First Row -->
+        <div class="md:col-span-3">
+            <!-- Big image with the woman -->
+            <img src="../../../assets/images/womanProgress.svg" alt="Woman Stretching"
+                class="w-full mx-auto max-w-xl md:max-w-lg">
         </div>
-    </div>
-    <!-- The three cards below the image -->
-    <div
-        class="flex 2xs:flex-col justify-center items-center gap-5 place-items-center md:grid md:grid-cols-2 lg:grid-cols-4 lg:gap-20  lg:place-content-end xl:gap-40 2xl:gap-60 w-fit lg:ml-5 mx-auto">
-        <!-- The first card -->
-        <div class="flex flex-col w-60 h-48 xl:w-72 xl:h-64 2xl:w-80 2xl:h-64
-             bg-secondary-300 rounded-lg col-span-1 md:-mr-10 lg:mr-0 lg:ml-8">
-             <!-- Title of the card -->
-            <h3
-                class="bg-primary rounded-md py-px w-56 xl:w-[17rem] xl:text-lg 2xl:w-[19rem] mx-auto text-white text-center mt-2 mb-2 font-bold">
-                Rutinas
-                finalizadas
-            </h3>
-            <div class="flex">
-                <span class="flex mt-20 ml-10 mr-5 text-5xl xl:mt-32 xl:mr-14 xl:text-6xl font-bold text-white">0</span>
-                <img src="../../../assets/icons/acrobatics.svg" alt="acrobatics" class="w-32 xl:w-36">
+        <div class="col-span-1">
+            <!-- Last exercise done on the right -->
+            <div *ngIf="lastExercise"
+                class="w-full md:w-60 mx-auto mt-10 md:mb-10 md:-ml-24 lg:mb-0 lg:-ml-8 xl:ml-4 2xl:ml-8 3xl:ml-24">
+                <h2 class="text-2xl md:text-xl lg:text-2xl text-center text-white font-medium mb-4">Ultimo ejercicio
+                </h2>
+                <div class="py-5 rounded-lg mx-auto">
+                    <div
+                        class="flex flex-wrap w-60 2xs:w-72 xs:w-[24.5rem] sm:w-80 md:w-48 2xl:w-full justify-center items-center gap-5 mx-auto">
+                        <a [routerLink]="['/dashboard/exercise', lastExercise.id]"
+                            class="flex flex-col w-[30rem] xs:[20rem] sm:w-[20rem] md:w-80 lg:w-52 bg-secondary-300 items-center p-3 rounded-lg cursor-pointer">
+                            <img [src]="lastExercise.gifUrl" alt="Exercise gift" class="rounded-md img-responsive">
+                            <span class="w-full text-white mt-2 font-semibold overflow-hidden">
+                                <p class="bg-primary py-px px-4 rounded-lg w-fit float-right"
+                                    style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60%;">
+                                    {{lastExercise.target}}</p>
+                            </span>
+                            <hr class="h-px w-full border-0 bg-black my-2">
+                            <p class="text-white font-bold self-start truncate w-full">{{lastExercise.name}}</p>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- The second card -->
-        <div
-            class="flex flex-col 2xs:w-60 2xs:h-48 xl:w-72 xl:h-64 2xl:w-80 2xl:h-64 bg-secondary-300 rounded-lg col-span-1 md:-ml-10 lg:ml-14 xl:ml-16">
-            <!-- Title of the card -->
-            <h3
-                class="bg-primary rounded-md py-px w-56 xl:w-[17rem] xl:text-lg 2xl:w-[19rem] mx-auto text-white text-center mt-2 mb-2 font-bold">
-                Ejercicios
-                completados
-            </h3>
-            <div class="flex">
-                <span
-                    class="flex mt-20 ml-10 mr-5 text-5xl lg:ml-5 xl:mt-32 xl:mr-14 xl:text-6xl font-bold text-white">0</span>
-                <img src="../../../assets/icons/dumbbell.svg" alt="dumbbell" class="w-32 xl:w-36">
-            </div>
-        </div>
+        <!-- Second Row -->
+        <div class="grid h-fit mb-0 col-span-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:flex flex-row gap-2 md:gap-4 lg:gap-4 justify-items-center">
+                <div class="col-span-1 md:col-span-1 2xs:col-span-1">
+                    <!-- Card 1: Rutinas finalizadas -->
+                    <div
+                        class="flex flex-col w-60 h-48 2xs:w-72 xs:w-96 sm:w-80 md:w-72 lg:w-60 2xl:w-72 2xl:h-64 3xl:w-[23rem] 3xl:h-64 bg-secondary-300 rounded-lg">
+                        <h3
+                            class="bg-primary rounded-md py-px w-56 xs:w-[23rem] sm:w-[19rem] md:w-56 2xl:w-[17rem] 2xl:text-lg 3xl:w-[22rem] mx-auto text-white text-center mt-2 mb-2 font-bold">
+                            Rutinas finalizadas</h3>
+                        <div class="flex">
+                            <span
+                                class="flex mt-20 ml-10 mr-5 text-5xl xs:ml-24 sm:ml-20 sm:-mr-2 2xl:mt-32  2xl:text-6xl font-bold text-white">{{
+                                completedRoutinesCount }}</span>
+                            <img src="../../../assets/icons/acrobatics.svg" alt="acrobatics" class="w-32 2xl:w-36">
+                        </div>
+                    </div>
+                </div>
 
-        <!-- The third card -->
-        <div
-            class="flex flex-col 2xs:w-{16rem} sm:w-[20rem] md:h-48 md:w-[36.875rem] lg:w-[25rem] xl:w-[30rem] xl:h-64 2xl:w-80 2xl:h-64 bg-secondary-300 rounded-lg col-span-2">
-            <!-- Title of the card -->
-            <h3
-                class="bg-primary rounded-md py-px 2xs:w-64 sm:w-[19rem] md:w-[36rem] lg:w-96 xl:text-lg xl:w-[29rem] mx-auto text-white text-center mt-2 mb-5 font-bold">
-                Horas
-                totales
-            </h3>
-            <div class="flex 2xs:flex-col 2xs:mx-auto 2xs:mb-10 md:flex-row justify-evenly">
-                <div class="flex-col mb-4 md:mr-10 lg:mb-0 self-center mx-auto items-center">
-                    <!-- Subtitle of the card -->
-                    <h3 class="text-white text-center font-bold xl:text-lg xl:mt-5">Esta semana</h3>
-                    <span
-                        class="flex mt-5 text-5xl ml-8 lg:ml-10 xl:mt-10 xl:ml-10 xl:text-6xl font-bold text-white">0</span>
+                <div class="col-span-1">
+                    <!-- Card 2: Ejercicios completados -->
+                    <div
+                        class="flex flex-col w-60 h-48 2xs:w-72 xs:w-96 sm:w-80 md:w-72 lg:w-60 2xl:w-80 2xl:h-64 3xl:w-96 3xl:h-64 bg-secondary-300 rounded-lg">
+                        <h3
+                            class="bg-primary rounded-md py-px w-56 xs:w-[23rem] sm:w-[19rem] md:w-56 2xl:w-[19rem] 2xl:text-lg 3xl:w-[23rem] mx-auto text-white text-center mt-2 mb-2 font-bold">
+                            Ejercicios completados</h3>
+                        <div class="flex">
+                            <span
+                                class="flex mt-20 ml-10 mr-5 text-5xl xs:ml-24 sm:ml-14 lg:ml-5 2xl:mt-32 2xl:mr-14 2xl:text-6xl font-bold text-white">{{
+                                completedExercisesCount }}</span>
+                            <img src="../../../assets/icons/dumbbell.svg" alt="dumbbell" class="w-32 2xl:w-36">
+                        </div>
+                    </div>
                 </div>
-                <div class="flex-col md:mr-10">
-                    <!-- Subtitle of the card -->
-                    <h3 class="text-white text-center font-bold xl:text-lg xl:mt-5">Anterior</h3>
-                    <span
-                        class="flex mt-5 ml-12 md:ml-4 lg:ml-5 text-5xl xl:mt-10 xl:text-6xl font-bold text-white">0</span>
+                <div class="sm:col-span-2 2xs:col-span-1 justify-items-center">
+                    <!-- Card 3: Horas totales -->
+                    <div
+                        class="flex flex-col items-center sm:items-stretch w-full 2xs:w-72 xs:w-96 sm:w-[38rem] md:h-48 md:w-[40rem] lg:w-[26rem] xl:w-[25rem] 2xl:w-[35.5rem] 2xl:h-64 3xl:w-[50rem] 3xl:h-64 bg-secondary-300 rounded-lg">
+                        <h3
+                            class="bg-primary rounded-md py-px w-56 xs:w-[23rem] sm:w-[37rem] md:w-[39rem] lg:w-[25rem] xl:w-[24.3rem] 2xl:w-[33.5rem] 2xl:text-lg 3xl:w-[49rem] mx-auto text-white text-center mt-2 mb-5 font-bold">
+                            Horas totales</h3>
+                        <div class="flex flex-col sm:flex-row justify-center sm:justify-evenly">
+                            <div class="flex-col mb-4 self-center items-center">
+                                <h3 class="text-white text-center font-bold 2xl:text-lg 2xl:mt-5">Esta semana</h3>
+                                <span
+                                    class="flex mt-5 xl:ml-0  text-4xl lg:text-3xl 2xl:mt-10 2xl:text-4xl font-bold text-white">{{
+                                    formattedHours }}</span>
+                            </div>
+                            <div class="flex-col mb-4 self-center items-center">
+                                <h3 class="text-white text-center font-bold 2xl:text-lg 2xl:mt-5">Anterior</h3>
+                                <span
+                                    class="flex mt-5  sm:ml-5 text-4xl lg:text-3xl 2xl:mt-10 2xl:text-4xl font-bold text-white">{{
+                                    formattedHours }}</span>
+                            </div>
+                            <img src="../../../assets/icons/chart.svg" alt="chart icon"
+                                class="w-32 mb-2 mx-auto xs:mx-1 lg:hidden 2xl:block 2xl:w-28 2xl:mt-10 3xl:w-52">
+                        </div>
+                    </div>
                 </div>
-                <img src="../../../assets/icons/chart.svg" alt="chart icon" class="w-32 xl:w-36 xl:mt-10">
             </div>
         </div>
     </div>

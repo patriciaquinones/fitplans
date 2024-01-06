@@ -1,12 +1,47 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  limit,
+  query,
+  getDocs,
+  serverTimestamp,
+  orderBy,
+  doc,
+  getDoc,
+  setDoc,
+} from 'firebase/firestore';
+import { AuthService, Credential } from '../services/auth.service';
+import { BehaviorSubject } from 'rxjs';
+import { ToastifyService } from './toastify.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RoutineService {
+  private completedExercisesCount: number = 0;
+  private completedRoutinesCount: number = 0;
+  private accumulatedMinutes: number = 0;
+  private exercisesPerRoutineThreshold: number = 5; //pending
+
+  private completedExercisesCountSubject = new BehaviorSubject<number>(0);
+  completedExercisesCount$ = this.completedExercisesCountSubject.asObservable();
+
+  private completedRoutinesCountSubject = new BehaviorSubject<number>(0);
+  completedRoutinesCount$ = this.completedRoutinesCountSubject.asObservable();
+
+  private accumulatedMinutesSubject = new BehaviorSubject<number>(0);
+  accumulatedMinutes$ = this.accumulatedMinutesSubject.asObservable();
+
+  constructor(
+    private toastifyService: ToastifyService,
+    private authService: AuthService
+  ) {    this.loadCountsFromFirestore();}
+
   private apiUrl = 'https://exercisedb.p.rapidapi.com/exercises';
   private headers = {
-    'X-RapidAPI-Key': '2a6a2011bamshb4bb5218d262209p18cc63jsnaf844e5abad3',
+    'X-RapidAPI-Key': 'ba8ee74d5cmsh9a82cc7ab6c6173p1561abjsn543a2780c444',
     'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
   };
 
@@ -40,5 +75,196 @@ export class RoutineService {
   async getExerciseById(id: string): Promise<any> {
     const encodedId = encodeURIComponent(id);
     return this.fetchFromApi(`/exercise/${encodedId}`);
+  }
+
+
+  private async loadCountsFromFirestore(): Promise<void> {
+    try {
+      const userId = this.authService.getUserId();
+
+      if (userId) {
+        const db = getFirestore();
+        const userDocRef = doc(db, 'userRoutines', userId);
+
+        const docSnapshot = await getDoc(userDocRef);
+
+        if (docSnapshot.exists()) {
+          const data = docSnapshot.data();
+
+          this.completedExercisesCountSubject.next(data['completedExercisesCount'] || 0);
+          this.completedRoutinesCountSubject.next(data['completedRoutinesCount'] || 0);
+          this.accumulatedMinutesSubject.next(data['accumulatedMinutes'] || 0);
+        }
+      }
+    } catch (error) {
+      console.error('Error loading counts from Firestore:', error);
+    }
+  }
+
+  private async saveCountsToFirestore(): Promise<void> {
+    try {
+      const userId = this.authService.getUserId();
+
+      if (userId) {
+        const db = getFirestore();
+        const userDocRef = doc(db, 'userRoutines', userId);
+
+        await setDoc(userDocRef, {
+          completedExercisesCount: this.completedExercisesCountSubject.value,
+          completedRoutinesCount: this.completedRoutinesCountSubject.value,
+          accumulatedMinutes: this.accumulatedMinutesSubject.value,
+        });
+      }
+    } catch (error) {
+      console.error('Error saving counts to Firestore:', error);
+    }
+  }
+
+  async addExerciseToRoutine(exercise: any, userId: string): Promise<void> {
+    try {
+      const exerciseWithTimestamp = {
+        ...exercise,
+        timestamp: serverTimestamp(),
+      };
+
+      const db = getFirestore();
+      const userExercisesRef = collection(
+        db,
+        'userRoutines',
+        userId,
+        'exercises'
+      );
+
+      // Add the exercise to the 'exercises' collection
+      await addDoc(userExercisesRef, exerciseWithTimestamp);
+
+      // Update counts and show toast
+      this.completedExercisesCount++;
+
+      if (this.completedExercisesCount % this.exercisesPerRoutineThreshold === 0) {
+        await this.completeRoutine(userId); // Create a new routine document
+        this.toastifyService.showToast('¡Rutina completada! 🎉');
+        this.completedExercisesCount = 0;
+      } else {
+        this.toastifyService.showToast('Se agregó el ejercicio a tu rutina. 🔥');
+      }
+
+      // Save counts to Firestore
+      this.saveCountsToFirestore();
+    } catch (error) {
+      console.error(error);
+      console.error('Error en addExerciseToRoutine:', error);
+      throw error;
+    }
+  }
+
+  private async completeRoutine(userId: string): Promise<void> {
+    try {
+      const db = getFirestore();
+      const userRoutinesRef = collection(
+        db,
+        'userRoutines',
+        userId,
+        'routines'
+      );
+
+      // Create a new routine document
+      const routineData = {
+        timestamp: serverTimestamp(),
+      };
+
+      await addDoc(userRoutinesRef, routineData);
+
+      // Update completed routines count
+      this.completedRoutinesCountSubject.next(
+        this.completedRoutinesCountSubject.value + 1
+      );
+
+      this.saveCountsToFirestore();
+    } catch (error) {
+      console.error('Error in completeRoutine:', error);
+      throw error;
+    }
+  }
+
+  finishExercise() {
+     // Increment the completed exercises count
+     this.completedExercisesCountSubject.next(
+      this.completedExercisesCountSubject.value + 1
+    );
+    this.toastifyService.showToast('¡Ejercicio completado! 🎉');
+
+    //Check if the user has completed 5 exercises
+    if (this.completedExercisesCountSubject.value % 5 === 0) {
+      this.completedRoutinesCountSubject.next(
+        this.completedRoutinesCountSubject.value + 1
+      ); // Increment the completed routines count
+    }
+
+    // Accumulate 2 minutes for every exercise completed
+    this.accumulatedMinutesSubject.next(
+      this.accumulatedMinutesSubject.value + 2
+    );
+
+    // Save counts to Firestore
+    this.saveCountsToFirestore();
+  }
+
+  // method` to get the last exercise added to the routine
+  getCompletedExercisesCount(): number {
+    return this.completedExercisesCount;
+  }
+
+  // Method to get the number of completed routines
+  getCompletedRoutinesCount(): number {
+    return this.completedRoutinesCount;
+  }
+
+  // Method to get the accumulated minutes
+  getAccumulatedMinutes(): number {
+    return this.accumulatedMinutes;
+  }
+
+  // Method to reset the accumulated minutes
+  resetAccumulatedMinutes() {
+    this.accumulatedMinutes = 0;
+  }
+
+  //get the last exercise added to the routine like above
+  async getLastAddedExercise(): Promise<any> {
+    try {
+      const db = getFirestore();
+      const userId = this.authService.getUserId();
+
+      if (userId) {
+        // To get the last exercise added to the routine
+        const exercisesQuery = query(
+          collection(db, 'userRoutines', userId, 'exercises'),
+          orderBy('timestamp', 'desc'),
+          limit(1)
+        );
+
+        const querySnapshot = await getDocs(exercisesQuery);
+
+        if (!querySnapshot.empty) {
+          // get the last exercise added to the routine
+          const lastExercise = querySnapshot.docs[0].data();
+          console.log('lastExercise:', lastExercise);
+          console.log('usuario', userId);
+          return lastExercise;
+        } else {
+          console.log('No se encontraron ejercicios para el usuario:', userId);
+          console.error('Error en getLastAddedExercise:');
+          return null;
+        }
+      } else {
+        console.log('No hay un usuario autenticado.');
+        return null;
+      }
+    } catch (error) {
+      console.error(error);
+      console.error('Error en getLastAddedExercise:', error);
+      throw error;
+    }
   }
 }

@@ -1,4 +1,8 @@
 <section id="exercise" class="container mx-auto w-full h-full max-w-7xl">
+    <button (click)="goBack()"
+        class="bg-primary text-white font-semibold rounded-full px-4 py-2 my-5 flex items-center hover:opacity-75">
+        <img src="../../../assets/icons/back.svg" class="w-8 h-8 mr-1"> volver
+    </button>
     <div class="bg-black">
         <!--Title-->
         <h1 class="text-white text-2xl text-center font-semibold mb-2 md:text-left md:text-4xl md:font-medium">
@@ -11,10 +15,17 @@
                 <h2 class="text-lg text-center md:text-2xl md:text-left text-white font-medium whitespace-pre-line">
                     {{ result.name }}
                 </h2>
-                <button (click)="addExercise()"
-                    class="bg-primary text-white font-semibold rounded-full px-4 py-2 my-5 hover:opacity-75">
-                    Agregar a mi rutina
-                </button>
+                <div class="flex">
+                    <button id="add" (click)="addExercise()"
+                        class="bg-primary text-white font-semibold rounded-full mr-1 px-4 py-2 my-5 hover:opacity-75">
+                        Agregar a mi rutina
+                    </button>
+                    <button id="finish" (click)="finishExercise()"
+                        class="bg-primary text-white font-semibold rounded-full px-4 py-2 my-5 ml-1 hover:opacity-75">
+                        Ejercicio terminado
+                    </button>
+                </div>
+
             </div>
 
             <!-- Exercise details -->

@@ -1,7 +1,22 @@
-button {
+#add {
 
-    @media (max-width: 516px) {
+    @media (max-width: 616px) {
         background: url('../../../assets/icons/plusIcon.svg') center center no-repeat;
+        width: 15px;
+        height: 15px;
+        border: none;
+        cursor: pointer;
+        background-color: red;
+        color: transparent;
+        padding: 10px;
+        box-sizing: content-box;
+        border-radius: 9999px;
+    }
+}
+
+#finish {
+    @media (max-width: 616px) {
+        background: url('../../../assets/icons/done.svg') center center no-repeat;
         width: 15px;
         height: 15px;
         border: none;

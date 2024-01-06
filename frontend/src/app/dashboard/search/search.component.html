@@ -1,4 +1,4 @@
-<section id="rutine" class="container mx-auto w-full h-full max-w-5xl">
+<section id="rutine" class="container mx-auto w-full h-full">
     <div class="bg-black">
         <!--Title-->
         <h1 class="text-white text-2xl text-center font-semibold mb-2 md:text-left md:text-4xl md:font-medium">
@@ -6,7 +6,7 @@
         </h1>
 
         <!-- Search bar -->
-        <form [formGroup]="search" (ngSubmit)="searching()" class="flex">
+        <form [formGroup]="search" (ngSubmit)="searching()" class="flex max-w-5xl">
             <input type="text" name="search" placeholder="Buscar una rutina de entrenamiento"
                 formControlName="words"
                 class="bg-secondary-200 rounded-full placeholder:text-white text-white text-xs sm:text-base w-full md:w-3/4 md:mr-5 my-5" />
@@ -18,7 +18,7 @@
         <!-- Filter by category -->
         <div>
             <h2 class="text-white text-xl font-bold mb-2">Categorias</h2>
-            <div class="flex justify-center items-center gap-2 md:gap-5 lg:gap-5 lg:ml-2">
+            <div class="flex justify-center items-center gap-2 md:gap-5 lg:gap-5 lg:ml-2 xl:gap-8">
                 <button (click)="filter(['lower legs', 'upper legs'])"
                     class="text-center h-20 2xs:w-20 xs:w-44 text-xs sm:text-sm rounded-lg bg-secondary-200 text-white font-semibold hover:opacity-75">
                     <img src="../../../assets/icons/leg.svg" alt="leg icon" class="mx-auto" />
@@ -47,10 +47,10 @@
             </div>
         </div>
         <!--card -->
-        <div class="py-5 rounded-lg max-w-5xl mx-auto">
+        <div class="py-5 rounded-lg mx-auto">
             <div class="flex flex-wrap justify-center items-center gap-5 mx-auto">
                 <a [routerLink]="['/dashboard/exercise', exercise.id]" *ngFor="let exercise of result"
-                    class="flex flex-col w-80 sm:w-60 md:w-48 lg:w-52 bg-secondary-300 items-center p-3 rounded-lg cursor-pointer">
+                    class="flex flex-col w-80 sm:w-60 md:w-48 lg:w-52 2xl:w-72 bg-secondary-300 items-center p-3 rounded-lg cursor-pointer">
                     <img [src]="exercise.gifUrl" alt="Exercise gift" class="rounded-md img-responsive">
                     <span class="w-full text-white mt-2 font-semibold overflow-hidden">
                         <p class="bg-primary py-px px-4 rounded-lg w-fit float-right"
