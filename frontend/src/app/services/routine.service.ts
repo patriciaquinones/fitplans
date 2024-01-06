@@ -77,7 +77,7 @@ export class RoutineService {
     return this.fetchFromApi(`/exercise/${encodedId}`);
   }
 
-
+// add couting methods from firestone
   private async loadCountsFromFirestore(): Promise<void> {
     try {
       const userId = this.authService.getUserId();
