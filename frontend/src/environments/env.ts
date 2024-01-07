@@ -1,0 +1,5 @@
+export const env = { 
+ 
+    PAYPAL_CLIENT_ID: "AZ99lrz028ICNW9UzlJnruNd3UAkEzoEAQ9t4CbmCkt6Sldc9F9FV0FCecQHX5Xw5hk5r8PzRlxer54I",
+    PAYPAL_CLIENT_SECRET: "EGtM1tmvrTtEl6VR3-YmVIR-95tT7oMzGutiF_A863eg9XP0sLwprsOTjGnLa6OpzQMNf647Tivwiw12",
+  };
