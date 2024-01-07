@@ -14,9 +14,9 @@ export class CheckoutComponent {
       {
         id: "#myPaypalButtons",
         currency: "USD",
-        value: "100.00",
+        value: "59.24",
         onApprove: (details) => {
-          alert("Transaction successfull");
+          alert(" Transaccion aprobada " + details.payer.name.given_name);
         },
       }
     );
