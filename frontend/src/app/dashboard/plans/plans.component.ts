@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule} from '@angular/router';
 import { RouterOutlet } from '@angular/router';
+import { PlanService } from '../../services/plan.service';
 
 declare let  paypal: any; // Asegúrate de importar la biblioteca de PayPal
 
@@ -15,14 +16,11 @@ export class PlansComponent  {
 
   
   constructor(
-    private router: Router
+    private router: Router, private planService: PlanService
   ) { }
 
-
-  goToCheckout() {
-
+  onSelectPlan(name: string, price: number): void {
+    this.planService.updatePlanInfo(name, price);
     this.router.navigate(['/dashboard/checkout']);
   }
-
-
 }

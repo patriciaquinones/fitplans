@@ -60,7 +60,7 @@
                 </div>
                 <!-- Button or link -->
                 <div class="flex justify-center">
-                    <button disabled
+                    <button (click)="onSelectPlan('Plan Gratuito', 0)" disabled
                         class="text-white hover:bg-opacity-90 font-semibold text-xs mx-auto mb-0 mt-24 w-36 py-1.5 text-center cursor-pointer">Plan
                         actual</button>
 
@@ -116,7 +116,7 @@
                     <span class="text-secondary-100">/Mensual</span>
                 </div>
                 <!-- Button or link -->
-                <button id="paypal" (click)="goToCheckout()"
+                <button id="paypal" (click)="onSelectPlan('Plan Premium', 1000)"
              class="text-white bg-primary hover:bg-opacity-90 focus:ring-4 focus:ring-primary font-semibold rounded-lg text-xs mx-auto mt-24 xl:mt-16 2xl:mt-24 3xl:mt-24 mb-0 w-36 py-1.5 text-center cursor-pointer">Obtener</button>
             </div>
         </div>

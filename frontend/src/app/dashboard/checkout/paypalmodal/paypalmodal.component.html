@@ -1,0 +1,7 @@
+<div *ngIf="visible" class="modal md:ml-16 z-50 w-screen">
+    <div class="modal-content">
+        <p class="lg:text-lg xl:text-xl">{{message}}</p>
+        <button (click)="onClose()"
+            class="block bg-primary hover:opacity-75 px-2 py-1 mt-4 text-center mx-auto rounded-lg text-white">OK</button>
+    </div>
+</div>
