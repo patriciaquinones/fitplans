@@ -11,6 +11,7 @@ import { CaloriesComponent } from './dashboard/calories/calories.component';
 import { CheckoutComponent } from './dashboard/checkout/checkout.component';
 import { SearchComponent } from './dashboard/search/search.component';
 import { ExerciseComponent } from './dashboard/exercise/exercise.component';
+import { UserresolverService } from './services/userresolver.service';
 
 
 export const routes: Routes = [
@@ -25,6 +26,7 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     data: { customLayout: true },
+    resolve: { user: UserresolverService },
     children: [
       { path: '', redirectTo: 'progress', pathMatch: 'full' }, // Per default Im redirecting to progress as figma shows
       { path: 'progress', component: ProgressComponent },
@@ -35,6 +37,7 @@ export const routes: Routes = [
       { path: 'checkout', component: CheckoutComponent },
       { path: 'search', component: SearchComponent },
       { path: 'exercise/:id', component: ExerciseComponent },
+      { path: '**', redirectTo: '/login'}
     ],
   },
 ];

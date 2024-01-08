@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -12,10 +14,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
-export class ProfileComponent implements OnInit {
-  user: any; // Define a property to store the user data
+export class ProfileComponent implements OnInit, OnDestroy {
+  destroy$ = new Subject<void>();
+  user: any;
 
-  // Your existing options array
+  // per default
   options = [
     { gender: 'Masculino' },
     { gender: 'Femenino' },
@@ -35,7 +38,43 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
+    this.authService.authenticationChanged$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((isAuthenticated) => {
+        if (isAuthenticated) {
+          this.refreshUserData();
+        } else {
+          //redirect to login later
+        }
+      });
+  }
+
+  private refreshUserData(): void {
+    const uid = this.authService.getUserId();
+    if (uid) {
+      this.authService.getUserData(uid)
+        .then((userData) => {
+          this.user = userData;
+          this.updateFormWithUserData();
+        })
+        .catch((error) => {
+          console.error('Error al obtener datos del usuario:', error);
+        });
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  ngAfterViewInit(): void {
+    // after the view is initialized call the function to load the user data
+    this.initializeUserData();
+  }
+
+  private async initializeUserData(): Promise<void> {
     const uid = this.authService.getUserId();
     if (uid) {
       this.user = await this.authService.getUserData(uid);
@@ -55,7 +94,6 @@ export class ProfileComponent implements OnInit {
       });
     }
   }
-  
 
   async updateProfile(): Promise<void> {
     const uid = this.authService.getUserId();

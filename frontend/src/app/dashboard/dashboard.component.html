@@ -40,6 +40,15 @@
                         <span class="xl:ml-4">{{ menuItem.label }}</span>
                     </a>
                 </li>
+                <li>
+                    <a (click)="logOut()"
+                        class="flex flex-col xl:flex-row items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
+                        <img src="../../assets/icons/logout.svg"
+                            class="w-8 h-8 text-white transition duration-75 group-hover:text-white"
+                            aria-hidden="true" />
+                        <span class="xl:ml-4">Salir</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </aside>

@@ -17,12 +17,15 @@
         <!-- The sidebar links with their icons -->
         <ul class="space-y-2 font-medium">
             <li *ngFor="let navbarItem of navbarItems">
-                <a [href]="navbarItem.link"
-                    class="flex flex-col items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
-                    <img [src]="navbarItem.iconPath"
-                        class="w-5 h-5 text-white transition duration-75 group-hover:text-white" aria-hidden="true" />
-                    <span class="text-sm">{{ navbarItem.label }}</span>
-                </a>
+                <ng-container *ngIf="isPremiumUser || navbarItem.link !== '/dashboard/calories'">
+                    <a [href]="navbarItem.link"
+                        class="flex flex-col items-center p-2 text-white rounded-lg hover:bg-gray-100 hover:bg-opacity-30 group">
+                        <img [src]="navbarItem.iconPath"
+                            class="w-5 h-5 text-white transition duration-75 group-hover:text-white"
+                            aria-hidden="true" />
+                        <span class="text-sm">{{ navbarItem.label }}</span>
+                    </a>
+                </ng-container>
             </li>
         </ul>
     </div>

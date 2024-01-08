@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FormsModule } from '@angular/forms'; // Asegúrate de importar FormsModule
+import { FormsModule } from '@angular/forms'; 
 
 interface MyRouteData {
   customLayout?: boolean;

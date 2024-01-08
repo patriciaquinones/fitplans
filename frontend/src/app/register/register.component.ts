@@ -19,6 +19,7 @@ interface SignUpForm {
   firstName: FormControl<string>;
   email: FormControl<string>;
   password: FormControl<string>;
+  isPremium?: FormControl<boolean>;
 }
 
 @Component({
@@ -56,6 +57,7 @@ export class RegisterComponent {
         email: this.registerForm.get('email')?.value ?? '',
         password: this.registerForm.get('password')?.value ?? '',
         firstName: this.registerForm.get('firstName')?.value ?? '',
+        isPremium: false,
       };
 
       if (
@@ -71,7 +73,7 @@ export class RegisterComponent {
         this.ToastifyService.showToast('Usuario registrado correctamente.');
         await this.authService.signUpWithEmailAndPassword(credential);
         this.router.navigate(['/login']);
-      }      
+      }
     } catch (error) {
       console.log(error);
       this.ToastifyService.showToast(

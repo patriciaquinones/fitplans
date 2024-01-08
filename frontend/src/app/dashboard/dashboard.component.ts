@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { DashsideComponent } from './dashside/dashside.component';
-import { Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { SidebarService } from '../sidebar.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,17 +15,35 @@ import { RouterModule } from '@angular/router';
 })
 export class DashboardComponent {
   showSidebar = false;
-  menuItems: { link: string; iconPath: string; label: string }[];
+  menuItems: { link: string; iconPath: string; label: string }[] = [];
+  isLoading: boolean = false;
+  constructor(
+    public sidebarService: SidebarService,
+    private router: Router,
+    private authService: AuthService,
+    private route: ActivatedRoute
+  ) {
+    const userData = this.route.snapshot.data['user'];
+    this.loadMenuItems();
+  }
 
-  constructor(public sidebarService: SidebarService, private router: Router) {
-    this.menuItems = sidebarService.getMenuItems();
+  async loadMenuItems() {
+    const isPremium = await this.authService.getIsPremium();
+
+    // Get menu items based on the user's premium status
+    this.menuItems = await this.sidebarService.getMenuItems(isPremium);
   }
 
   toggleSidebar() {
     this.sidebarService.toggleSidebar();
   }
- 
+
   closeSidebar() {
     this.sidebarService.triggerCloseSidebar();
+  }
+
+  logOut() {
+    this.authService.logOut();
+    this.router.navigate(['/login']);
   }
 }

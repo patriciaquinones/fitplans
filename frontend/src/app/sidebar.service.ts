@@ -1,4 +1,12 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { AuthService } from './services/auth.service';
+import { ToastifyService } from './services/toastify.service';
+
+export interface MenuItem {
+  link: string;
+  iconPath: string;
+  label: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -6,6 +14,8 @@ import { Injectable, EventEmitter } from '@angular/core';
 export class SidebarService {
   sidebarToggled = new EventEmitter<void>();
   closeSidebar = new EventEmitter<void>();
+
+  constructor(private authService: AuthService, private ToastifyService: ToastifyService) {}
 
   //menu items for dashboard
   menuItems = [
@@ -39,11 +49,6 @@ export class SidebarService {
       iconPath: '../../assets/icons/settings.svg',
       label: 'Perfil',
     },
-    {
-      link: '/../../',
-      iconPath: '../../assets/icons/logout.svg',
-      label: 'Salir',
-    },
   ];
 
   //menu items for homepage, register and login
@@ -66,10 +71,6 @@ export class SidebarService {
     },
   ];
 
-  getMenuItems() {
-    return this.menuItems;
-  }
-
   getNavbarItems() {
     return this.navbarItems;
   }
@@ -80,5 +81,26 @@ export class SidebarService {
 
   triggerCloseSidebar() {
     this.closeSidebar.emit();
+  }
+
+  async logOut(): Promise<void> {
+    // close sidebar
+    this.triggerCloseSidebar();
+  
+    this.ToastifyService.showToast('Cerrando sesión...');
+  
+    // logout
+    await this.authService.logOut();
+  }
+
+  getMenuItems(isPremium: boolean): Promise<MenuItem[]> {
+    // Return menu items based on the user's premium status
+    return new Promise((resolve) => {
+      resolve(
+        isPremium
+          ? this.menuItems
+          : this.menuItems.filter((item) => item.label !== 'Calorías')
+      );
+    });
   }
 }
