@@ -60,7 +60,6 @@ export class AuthService {
      .then(() => {
      })
      .catch((error) => {
-       console.error('Error al configurar la persistencia:', error);
      });
 
    // Listen for changes to the user's authentication state
@@ -74,7 +73,6 @@ export class AuthService {
      }
    });
  }
-
 
   isAuthenticated(): boolean {
     // use the observable to check if the user is authenticated
@@ -184,9 +182,7 @@ export class AuthService {
     } catch (error: any) {
       if (error.code === 'permission-denied') {
         this.ToastifyService.showToast('Ocurrio un error inesperado.');
-        console.error('Error de permisos:', error);
       } else {
-        console.error('Error al obtener datos del usuario:', error);
         await new Promise((resolve) => setTimeout(resolve, 1000));
         return this.getUserData(uid);
       }

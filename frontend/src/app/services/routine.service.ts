@@ -279,21 +279,14 @@ export class RoutineService {
         if (!querySnapshot.empty) {
           // get the last exercise added to the routine
           const lastExercise = querySnapshot.docs[0].data();
-          console.log('lastExercise:', lastExercise);
-          console.log('usuario', userId);
           return lastExercise;
         } else {
-          console.log('No se encontraron ejercicios para el usuario:', userId);
-          console.error('Error en getLastAddedExercise:');
           return null;
         }
       } else {
-        console.log('No hay un usuario autenticado.');
         return null;
       }
     } catch (error) {
-      console.error(error);
-      console.error('Error en getLastAddedExercise:', error);
       throw error;
     }
   }
