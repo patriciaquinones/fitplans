@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "creditcardpayments": "^1.0.3"
+  }
+}
