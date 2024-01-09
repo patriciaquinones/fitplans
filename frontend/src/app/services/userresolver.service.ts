@@ -17,7 +17,6 @@ export class UserresolverService implements Resolve<any> {
       return this.authService.getUserData(uid);
     } else {
       // if the UID is not available, log an error and return null
-      console.error('No se puede resolver el usuario. Usuario no autenticado.');
       return null;
     }
   }

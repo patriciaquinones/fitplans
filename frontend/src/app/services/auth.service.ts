@@ -58,7 +58,6 @@ export class AuthService {
    // Configure session persistence
    setPersistence(this.auth, browserSessionPersistence)
      .then(() => {
-       console.log('Persistencia de sesión configurada correctamente.');
      })
      .catch((error) => {
        console.error('Error al configurar la persistencia:', error);
